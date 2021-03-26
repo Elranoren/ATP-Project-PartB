@@ -1,24 +1,24 @@
 package algorithms.search;
 
 public abstract class AState {
-    private String positionName;
+    private String stateName;
     private int dist;
     private boolean isVisit;
     private AState preAState;
 
     public AState() {
-        this.positionName = null;
+        this.stateName = null;
         this.dist = 0;
         this.isVisit =false;
         this.preAState = null;
     }
 
-    public String getPositionName() {
-        return positionName;
+    public String getStateName() {
+        return stateName;
     }
 
     public void setPositionName(String positionName) {
-        this.positionName = positionName;
+        this.stateName = positionName;
     }
 
     public int getDist() {

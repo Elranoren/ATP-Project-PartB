@@ -1,6 +1,7 @@
 package algorithms.mazeGenerators;
+import algorithms.search.*;
 
-public class Maze   {
+public class Maze implements ISearchable {
     private int rows , columns;
     private Position start,end;
     private int[][] maze;

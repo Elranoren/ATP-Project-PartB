@@ -57,6 +57,7 @@ public class Maze {
     }
 
     public void print() {
+        //check git connection
         if(start==null || end ==null)
             System.out.print("bad maze");
         else{

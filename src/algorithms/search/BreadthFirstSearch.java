@@ -5,8 +5,8 @@ import algorithms.search.ASearchingAlgorithm;
 import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
-    private Queue<AState> q;
-    private int numberOfNodesEvaluated;
+    protected Queue<AState> q;
+    protected int numberOfNodesEvaluated;
 
     public BreadthFirstSearch() {
         this.q = new PriorityQueue<>(new ComperBreadthFirstSearch());

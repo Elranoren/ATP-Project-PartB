@@ -9,7 +9,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
     protected int numberOfNodesEvaluated;
 
     public BreadthFirstSearch() {
-        this.q = new PriorityQueue<>(new ComperBreadthFirstSearch());
+        this.q = new LinkedList<AState>();
         this.numberOfNodesEvaluated = 0;
     }
 
@@ -78,5 +78,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
             sol.getSol().add(0,state);
         }
         return sol;
+    }
+
+    public void setQ(Queue<AState> q) {
+        this.q = q;
     }
 }

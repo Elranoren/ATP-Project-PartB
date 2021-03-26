@@ -1,6 +1,6 @@
 package algorithms.mazeGenerators;
 
-public class Maze {
+public class Maze   {
     private int rows , columns;
     private Position start,end;
     private int[][] maze;

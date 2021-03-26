@@ -1,0 +1,247 @@
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Failed: generating maze (1*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Failed: generating maze (1*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Failed: generating maze (1*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Failed: generating maze (1*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (2*2) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (1*11) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (11*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (5*5) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Failed: generating maze (1*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (1*1) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (-100*-1000) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (-100*-1000) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (1*100) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (20*20) using SimpleMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (20*20) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (20*20) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (20*20) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+Test started!
+Test started!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (4*4) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+Test started!
+TEST Passed: generating maze (1000*1000) using MyMazeGenerator
+Test finished!
+Test started!
+Test started!
+Test started!
+TEST Passed: generating maze (1000*1000) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (100*100) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (100*100) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (100*100) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (100*100) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using MyMazeGenerator
+Test finished!
+Test started!
+Test started!
+Test started!
+Test started!
+Test started!
+TEST Passed: generating maze (500*500) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (500*500) using MyMazeGenerator
+Test finished!
+Test started!
+TEST Passed: generating maze (500*500) using MyMazeGenerator
+Test finished!
+Test started!
+Test started!
+Test started!
+TEST Passed: generating maze (1000*1000) using MyMazeGenerator
+Test finished!
+Test started!

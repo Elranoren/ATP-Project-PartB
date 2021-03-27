@@ -27,7 +27,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
         while(!(s.isEmpty()))
         {
-            numberOfNodesEvaluated++;
+           // numberOfNodesEvaluated++;
             AState topState= s.pop();
             if(!topState.equals(obj.getTargetState()))
             {

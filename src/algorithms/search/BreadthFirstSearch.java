@@ -6,11 +6,11 @@ import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
     protected Queue<AState> q;
-    protected int numberOfNodesEvaluated;
+
 
     public BreadthFirstSearch() {
         this.q = new LinkedList<AState>();
-        this.numberOfNodesEvaluated = 0;
+        numberOfNodesEvaluated = 0;
     }
 
     @Override
@@ -18,10 +18,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         return "BreadthFirstSearch";
     }
 
-    @Override
-    public int getNumberOfNodesEvaluated() {
-        return this.numberOfNodesEvaluated;
-    }
+
 
     /**
      * @param obj The object that we want to search a path on
@@ -66,19 +63,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         return sol;
     }
 
-    /**
-     * @param state current state
-     * @return the path
-     */
-    private Solution returnPath(AState state) {
-        Solution sol = new Solution();
-        sol.getSol().add(0,state);
-        while (state.getPreAState() !=null){
-            state=state.getPreAState();
-            sol.getSol().add(0,state);
-        }
-        return sol;
-    }
+
+
 
     public void setQ(Queue<AState> q) {
         this.q = q;

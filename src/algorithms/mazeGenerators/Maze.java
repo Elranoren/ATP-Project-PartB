@@ -1,7 +1,9 @@
 package algorithms.mazeGenerators;
 import algorithms.search.*;
 
-public class Maze implements ISearchable {
+import java.util.List;
+
+public class Maze{
     private int rows , columns;
     private Position start,end;
     private int[][] maze;
@@ -90,6 +92,7 @@ public class Maze implements ISearchable {
         }
 
     }
+
 
 }
 

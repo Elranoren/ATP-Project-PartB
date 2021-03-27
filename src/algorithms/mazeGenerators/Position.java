@@ -1,7 +1,9 @@
 package algorithms.mazeGenerators;
+import algorithms.search.AState;
+
 import java.io.Serializable;
 
-public class Position {
+public class Position extends AState {
     int row,column;
 
     public Position(int row, int column) {
@@ -28,7 +30,7 @@ public class Position {
         return row;
     }
 
-    public void setRowindex(int row) {
+    public void setRowIndex(int row) {
         this.row = row;
     }
 
@@ -36,10 +38,14 @@ public class Position {
         return column;
     }
 
-    public void setColumn(int column) {
+    public void setColumnIndex(int column) {
         this.column = column;
     }
 
+    public void setPosition(Position pos) {
+        setRowIndex(pos.getRowIndex());
+        setColumnIndex(pos.getColumnIndex());
+    }
     @Override
     public String toString() {
         return "{" + this.row + "," + this.column + "}";

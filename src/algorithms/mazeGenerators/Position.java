@@ -11,7 +11,7 @@ public class Position extends AState {
         this.column = column;
     }
 
-    public boolean equal(Object o){
+    public boolean equals(Object o){
         if (this == o)
             return true;
         if((o instanceof Position)==false)
@@ -20,11 +20,12 @@ public class Position extends AState {
         if(this.row!=(p.row))
             return false;
         return  p.column==this.column;
-
-
-
     }
-
+    public boolean equals(Position p){
+        if(this.row!=(p.row))
+            return false;
+        return  p.column==this.column;
+    }
 
     public int getRowIndex() {
         return row;
@@ -49,5 +50,10 @@ public class Position extends AState {
     @Override
     public String toString() {
         return "{" + this.row + "," + this.column + "}";
+    }
+
+    @Override
+    public String getStateName() {
+        return this.toString();
     }
 }

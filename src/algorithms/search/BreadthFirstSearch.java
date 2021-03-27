@@ -25,7 +25,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
      * @return the path solution between the start to the goal
      */
     @Override
-    public Solution findSol(ISearchable obj) {
+    public Solution solve(ISearchable obj) {
         List<AState> curStateNeighbors;
         Map<String,Integer> visit = new HashMap<String,Integer>();
         q.add(obj.getSourceState());

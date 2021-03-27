@@ -16,10 +16,10 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
      */
     protected Solution returnPath(AState state) {
         Solution sol = new Solution();
-        sol.getSol().add(0,state);
+        sol.getSolutionPath().add(0,state);
         while (state.getPreAState() !=null){
             state=state.getPreAState();
-            sol.getSol().add(0,state);
+            sol.getSolutionPath().add(0,state);
         }
         return sol;
     }

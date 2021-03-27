@@ -10,7 +10,7 @@ public class Solution {
     }
 
 
-    public ArrayList<AState> getSol() {
+    public ArrayList<AState> getSolutionPath() {
         return sol;
     }
 

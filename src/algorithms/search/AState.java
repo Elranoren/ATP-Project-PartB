@@ -7,15 +7,12 @@ public abstract class AState {
     private AState preAState;
 
     public AState() {
-        this.stateName = null;
         this.dist = 0;
         this.isVisit =false;
         this.preAState = null;
     }
 
-    public String getStateName() {
-        return stateName;
-    }
+    public abstract String getStateName() ;
 
     public void setPositionName(String positionName) {
         this.stateName = positionName;

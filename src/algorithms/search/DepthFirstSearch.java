@@ -19,7 +19,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
 
     @Override
-    public Solution findSol(ISearchable obj) {
+    public Solution solve(ISearchable obj) {
         List<AState> curStateNeighbors;
         Map<String,Integer> visit = new HashMap<String,Integer>();
         s.push(obj.getSourceState());

@@ -1,8 +1,6 @@
 package algorithms.mazeGenerators;
 import algorithms.search.AState;
 
-import java.io.Serializable;
-
 public class Position extends AState {
     int row,column;
 

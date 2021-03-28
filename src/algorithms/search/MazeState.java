@@ -35,7 +35,9 @@ public class MazeState extends AState {
     }
     public boolean equals(Position p)
     {
-        return ((this.mazeP).equals(p));
+        if (mazeP!=null)
+            return ((this.mazeP).equals(p));
+        return false;
     }
 
     @Override

@@ -44,7 +44,25 @@ public class SearchableMaze implements ISearchable {
                         stateNeighbor.add(new MazeState(new Position(p.getRowIndex()+1,i)));
             }
         }
+        if (p.getRowIndex()==0 && p.getColumnIndex()==0) {
+            zeroStart(p,stateNeighbor);
+        }
         return stateNeighbor;
+    }
+
+    public void zeroStart(Position p, List<AState>  stateNeighbor)
+    {
+
+        if (m.getColumns()>1) {
+            p= new Position(0, 1);
+            if (m.getMaze()[0][1] == 0)
+                stateNeighbor.add(new MazeState(new Position(0,1)));
+        }
+        if(m.getRows()>1) {
+            p = new Position(1, 0);
+            if (m.getMaze()[1][0] == 0)
+                stateNeighbor.add(new MazeState(new Position(1,0)));
+        }
     }
 
     @Override

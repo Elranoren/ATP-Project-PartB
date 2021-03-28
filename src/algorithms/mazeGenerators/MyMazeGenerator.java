@@ -7,9 +7,9 @@ public class MyMazeGenerator extends AMazeGenerator{
 
     @Override
     public Maze generate(int rows, int columns) {
-        if(rows<2||columns<2){
-            rows=2;
-            columns=2;
+        if(rows<3||columns<3){
+            rows=3;
+            columns=3;
         }
         Maze m = new Maze(rows,columns);
         for (int i = 0; i < rows; i++) {
@@ -81,7 +81,25 @@ public class MyMazeGenerator extends AMazeGenerator{
                 validNeighbor.add(temp_p);
 
         }
+        if (p.getRowIndex()==0 && p.getColumnIndex()==0) {
+            zeroStart (validNeighbor ,  m);
+        }
 
+    }
+
+    public void zeroStart (List<Position>validNeighbor , Maze m)
+    {
+        Position temp_p;
+        if (m.getColumns()>1) {
+            temp_p = new Position(0, 1);
+            if (cellVisitedMap.get(temp_p.toString()) == 0)
+                validNeighbor.add(temp_p);
+        }
+        if(m.getRows()>1) {
+            temp_p = new Position(1, 0);
+            if (cellVisitedMap.get(temp_p.toString()) == 0)
+                validNeighbor.add(temp_p);
+        }
     }
 
     /**

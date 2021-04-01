@@ -2,12 +2,12 @@ package algorithms.search;
 
 public abstract class AState {
     private String stateName;
-    private int dist;
+    private int cost;
     private boolean isVisit;
     private AState preAState;
 
     public AState() {
-        this.dist = 0;
+        this.cost = 0;
         this.isVisit =false;
         this.preAState = null;
     }
@@ -18,12 +18,12 @@ public abstract class AState {
         this.stateName = positionName;
     }
 
-    public int getDist() {
-        return dist;
+    public int getCost() {
+        return cost;
     }
 
-    public void setDist(int dist) {
-        this.dist = dist;
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public boolean isVisit() {

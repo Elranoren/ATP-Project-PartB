@@ -4,9 +4,11 @@ import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState {
         private Position mazeP;
+        private AState preSuccessor;
 
-    public MazeState(Position mazeP) {
+    public MazeState(Position mazeP , AState preSuccessor) {
         this.mazeP = mazeP;
+        this.preSuccessor = preSuccessor;
     }
     public Position getMazeP() {
         return mazeP;

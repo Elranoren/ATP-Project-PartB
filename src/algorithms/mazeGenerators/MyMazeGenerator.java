@@ -7,9 +7,9 @@ public class MyMazeGenerator extends AMazeGenerator{
 
     @Override
     public Maze generate(int rows, int columns) {
-        if(rows<3||columns<3){
-            rows=3;
-            columns=3;
+        if((rows<2 && columns<2) || rows==0 || columns==0){
+            rows=2;
+            columns=2;
         }
         Maze m = new Maze(rows,columns);
         for (int i = 0; i < rows; i++) {
@@ -21,17 +21,11 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
 
         }
-        Random r = new Random(); // randomaize the start position of the algoritem
-        int r_col = r.nextInt(columns);
-        int r_row = r.nextInt(rows);
-        while(r_col!=0 && r_col!=columns-1 && r_row!=0 && r_row!=rows-1){ //find position that not in the maze frame
-            r_col = r.nextInt(columns);
-            r_row = r.nextInt(rows);
-        }
-        Position p = new Position(r_row,r_col);
+        Random r = new Random();
+        Position p =randomPosOnFrame(rows,columns);
         cellVisitedMap.replace(p.toString(),1);
         m.setStartPosition(p);
-        m.getMaze()[r_row][r_col]=0;
+        m.getMaze()[p.getRowIndex()][p.getColumnIndex()]=0;
         updateValidNeighbor(p,m);
         while (validNeighbor.isEmpty()==false){
             int index=r.nextInt(validNeighbor.size());
@@ -51,12 +45,39 @@ public class MyMazeGenerator extends AMazeGenerator{
                     validNeighbor.remove(visitN);
                 }
             }
-
-
+        }
+        if ( m.getGoalPosition()==null)
+        {
+            List<Position> neighbStart = new ArrayList<Position>();
+            if ( m.getStartPosition().getRowIndex() +1 < m.getRows())
+                neighbStart.add(new Position(m.getStartPosition().getRowIndex() +1,m.getStartPosition().getColumnIndex())) ;
+            if ( m.getStartPosition().getRowIndex() -1 >= 0 )
+                neighbStart.add(new Position(m.getStartPosition().getRowIndex() -1,m.getStartPosition().getColumnIndex())) ;
+            if ( m.getStartPosition().getColumnIndex()+1 < m.getColumns())
+                neighbStart.add(new Position(m.getStartPosition().getRowIndex() ,m.getStartPosition().getColumnIndex()+1)) ;
+            if ( m.getStartPosition().getColumnIndex()-1 >= m.getColumns())
+                neighbStart.add(new Position(m.getStartPosition().getRowIndex() ,m.getStartPosition().getColumnIndex()-1)) ;
+            Collections.shuffle(neighbStart);
+            p = neighbStart.get(0);
+            m.getMaze()[p.getRowIndex()][p.getColumnIndex()] = 0;
+            m.setGoalPosition(p);
         }
         return m;
 
 
+    }
+
+    public Position randomPosOnFrame (int rows,int columns)
+    {
+        Random r = new Random(); // randomaize the start position of the algoritem
+        int r_col = r.nextInt(columns);
+        int r_row = r.nextInt(rows);
+        while(r_col!=0 && r_col!=columns-1 && r_row!=0 && r_row!=rows-1){ //find position that not in the maze frame
+            r_col = r.nextInt(columns);
+            r_row = r.nextInt(rows);
+        }
+        Position p = new Position(r_row,r_col);
+        return p;
     }
 
     /**

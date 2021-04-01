@@ -31,7 +31,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
             AState topState= s.pop();
             if(!topState.equals(obj.getTargetState()))
             {
-                curStateNeighbors=obj.getAllPossibleStates(topState);
+                curStateNeighbors=obj.getAllSuccessors(topState);
                 for (AState neigState: curStateNeighbors
                 ) {
                     if(visit.get(neigState.getStateName()) == null){

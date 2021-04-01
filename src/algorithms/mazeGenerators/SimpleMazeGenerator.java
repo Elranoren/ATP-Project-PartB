@@ -6,7 +6,7 @@ import java.util.Random;
 public class SimpleMazeGenerator extends AMazeGenerator{
     @Override
     public Maze generate(int rows, int columns) {
-        if(rows<2 && columns<2){
+        if((rows<2 && columns<2) || rows==0 || columns==0){
             rows=2;
             columns=2;
         }

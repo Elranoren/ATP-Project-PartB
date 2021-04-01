@@ -9,10 +9,6 @@ public class ComperBestFirstSearch implements Comparator<AState>{
      */
     @Override
     public int compare(AState o1, AState o2) {
-        if (o1.getDist() > o2.getDist())
-            return 1;
-        if (o1.getDist() == o2.getDist())
-            return 0;
-        return -1;
+        return Integer.compare(o1.getCost(),o2.getCost());
     }
 }

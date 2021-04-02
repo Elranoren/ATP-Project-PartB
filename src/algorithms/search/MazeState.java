@@ -18,6 +18,10 @@ public class MazeState extends AState {
         this.mazeP.setPosition(mazeP);
     }
 
+    /**
+     * @param o an object value to check if equal to this MazeState
+     * @return true if equal, else: return false
+     */
     public boolean equals(Object o)
     {
         if (this==o)
@@ -31,6 +35,10 @@ public class MazeState extends AState {
         }
     }
 
+    /**
+     * @param ms a MazeState value to check if equal to this MazeState
+     * @return true if equal, else: return false
+     */
     public boolean equals(MazeState ms)
     {
         return (ms.equals(this.mazeP));

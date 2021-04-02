@@ -4,6 +4,13 @@ package algorithms.mazeGenerators;
 import java.util.Random;
 
 public class SimpleMazeGenerator extends AMazeGenerator{
+
+
+    /**
+     * @param rows    Maze rows
+     * @param columns Maze columns
+     * @return a maze rows*columns
+     */
     @Override
     public Maze generate(int rows, int columns) {
         if((rows<2 && columns<2) || rows==0 || columns==0){
@@ -20,11 +27,16 @@ public class SimpleMazeGenerator extends AMazeGenerator{
             }
 
         }
-        setStartGoalPos(m);
-        setsol(m);
+        setRandStartGoalPos(m);
+        setSol(m);
         return m;
     }
-    public void setStartGoalPos(Maze m){
+
+
+    /**
+     * @param m the maze : we will set start and goal position
+     */
+    public void setRandStartGoalPos(Maze m){
         Random r = new Random();
         int indexStart = r.nextInt(m.getColumns());
         int indexEnd = r.nextInt(m.getColumns());
@@ -33,7 +45,10 @@ public class SimpleMazeGenerator extends AMazeGenerator{
 
     }
 
-    public void setsol(Maze m) {
+    /**
+     * @param m the maze : we will set a path solution
+     */
+    public void setSol(Maze m) {
         for (int i = 1; i <= m.getRows()/2; i++) {
                 m.getMaze()[i][m.getStartPosition().getColumnIndex()]=0;
             }

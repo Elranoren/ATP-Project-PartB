@@ -15,7 +15,7 @@ public class SearchableMaze implements ISearchable {
 
     /**
      * @param s a state that we will find all the possible neighbors state
-     * @return array of all the possible neighbors state (of target)
+     * @return list of all the possible neighbors state (of state s)
      */
     @Override
     public List<AState> getAllSuccessors(AState s) {
@@ -44,12 +44,17 @@ public class SearchableMaze implements ISearchable {
             }
         }
         if (p.getRowIndex()==0 && p.getColumnIndex()==0) {
-            zeroStart(s,p,stateNeighbor);
+            zeroPosition(s,p,stateNeighbor);
         }
         return stateNeighbor;
     }
 
-    public void zeroStart(AState s,Position p, List<AState>  stateNeighbor)
+    /**
+     * @param s a state that we will find all the possible neighbors state
+     * @param p position of {0,0}
+     * @param stateNeighbor list of all the possible neighbors state (of state s)
+     */
+    public void zeroPosition(AState s,Position p, List<AState> stateNeighbor)
     {
 
         if (m.getColumns()>1) {
@@ -64,13 +69,13 @@ public class SearchableMaze implements ISearchable {
         }
     }
 
-    @Override
-    public AState getSourceState() {
-        Position p= this.m.getStartPosition();
-        MazeState ms= new MazeState(p,null);
-        return ms;
-    }
 
+    /**
+     * @param s the presuccessor of "p"
+     * @param p  position value : possible neighbors state (of state s)
+     * @param cost the cost of the movement from "s" to "p"
+     * @param stateNeighbor list of all the possible neighbors state (of state s)
+     */
     public void addToList(AState s ,Position p, int cost, List<AState> stateNeighbor){
         MazeState msTmp = new MazeState(p, s);
         msTmp.setCost(cost);
@@ -78,6 +83,15 @@ public class SearchableMaze implements ISearchable {
             msTmp.setCost(cost+s.getCost());
         stateNeighbor.add(msTmp);
     }
+
+
+    @Override
+    public AState getSourceState() {
+        Position p= this.m.getStartPosition();
+        MazeState ms= new MazeState(p,null);
+        return ms;
+    }
+
 
     @Override
     public AState getTargetState() {

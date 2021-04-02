@@ -60,35 +60,32 @@ public class Maze{
     }
 
     public void print() {
-        //check git connection
-        if(start==null || end ==null)
-            System.out.print("bad maze");
-        else{
-            System.out.print("{ ");
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
-                 boolean isStart = i == start.getRowIndex() && j==start.getColumnIndex();
-                 boolean isEnd = i == end.getRowIndex() && j==end.getColumnIndex();
-                 if(isStart){
-                     System.out.print("S ");
+
+        System.out.print("{ ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+             boolean isStart = i == start.getRowIndex() && j==start.getColumnIndex();
+             boolean isEnd = i == end.getRowIndex() && j==end.getColumnIndex();
+             if(isStart){
+                 System.out.print("S ");
+             }
+             else if(isEnd){
+                 System.out.print("E ");
+             }
+             else if (maze[i][j]==0){
+                 System.out.print("0 ");
+             }
+             else
+                 System.out.print("1 ");
+             if(j==columns-1){
+                 System.out.print("}");
+                 if(i!=rows-1){
+                 System.out.print("\n");
+                 System.out.print("{ ");
                  }
-                 else if(isEnd){
-                     System.out.print("E ");
-                 }
-                 else if (maze[i][j]==0){
-                     System.out.print("0 ");
-                 }
-                 else
-                     System.out.print("1 ");
-                 if(j==columns-1){
-                     System.out.print("}");
-                     if(i!=rows-1){
-                     System.out.print("\n");
-                     System.out.print("{ ");
-                     }
-                 }
-                }
+             }
             }
+
         }
 
     }

@@ -12,15 +12,7 @@ public class MyMazeGenerator extends AMazeGenerator{
             columns=2;
         }
         Maze m = new Maze(rows,columns);
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                Position p = new Position(i,j);
-                cellVisitedMap.put(p.toString(),0);
-                m.getMaze()[i][j] = 1;
-
-            }
-
-        }
+        setAllWall(m);
         Random r = new Random();
         Position p =randomPosOnFrame(rows,columns);
         cellVisitedMap.replace(p.toString(),1);
@@ -47,6 +39,28 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
         if ( m.getGoalPosition()==null)
+            checkNullGoalPos(m);
+        return m;
+    }
+
+    /**
+     * @param m oue maze : set all the maze to walls
+     */
+    public void setAllWall (Maze m)
+    {
+        for (int i = 0; i < m.getRows(); i++) {
+            for (int j = 0; j < m.getColumns(); j++) {
+                Position p = new Position(i,j);
+                cellVisitedMap.put(p.toString(),0);
+                m.getMaze()[i][j] = 1;
+            }
+        }
+    }
+    /**
+     * @param m Maze to check if goalPosition is null
+     */
+    public void checkNullGoalPos (Maze m){
+        if ( m.getGoalPosition()==null)
         {
             List<Position> neighbStart = new ArrayList<Position>();
             if ( m.getStartPosition().getRowIndex() +1 < m.getRows())
@@ -58,15 +72,17 @@ public class MyMazeGenerator extends AMazeGenerator{
             if ( m.getStartPosition().getColumnIndex()-1 >= m.getColumns())
                 neighbStart.add(new Position(m.getStartPosition().getRowIndex() ,m.getStartPosition().getColumnIndex()-1)) ;
             Collections.shuffle(neighbStart);
-            p = neighbStart.get(0);
+            Position p = neighbStart.get(0);
             m.getMaze()[p.getRowIndex()][p.getColumnIndex()] = 0;
             m.setGoalPosition(p);
         }
-        return m;
-
-
     }
 
+    /**
+     * @param rows int : number of rows ( of the maze)
+     * @param columns int : number of columns ( of the maze)
+     * @return Position value of random row and random column
+     */
     public Position randomPosOnFrame (int rows,int columns)
     {
         Random r = new Random(); // randomaize the start position of the algoritem
@@ -108,6 +124,10 @@ public class MyMazeGenerator extends AMazeGenerator{
 
     }
 
+    /**
+     * @param validNeighbor list of valid neighbors of position {0,0}
+     * @param m our maze
+     */
     public void zeroStart (List<Position>validNeighbor , Maze m)
     {
         Position temp_p;

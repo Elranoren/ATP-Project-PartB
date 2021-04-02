@@ -3,12 +3,10 @@ package algorithms.search;
 public abstract class AState {
     private String stateName;
     private int cost;
-    private boolean isVisit;
     private AState preAState;
 
     public AState() {
         this.cost = 0;
-        this.isVisit =false;
         this.preAState = null;
     }
 
@@ -26,13 +24,6 @@ public abstract class AState {
         this.cost = cost;
     }
 
-    public boolean isVisit() {
-        return isVisit;
-    }
-
-    public void setVisit(boolean visit) {
-        isVisit = visit;
-    }
 
     public AState getPreAState() {
         return preAState;

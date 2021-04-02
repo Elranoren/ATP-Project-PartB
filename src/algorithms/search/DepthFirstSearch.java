@@ -18,6 +18,10 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     }
 
 
+    /**
+     * @param obj The object that we want to search a path on
+     * @return the path solution between the start to the goal
+     */
     @Override
     public Solution solve(ISearchable obj) {
         List<AState> curStateNeighbors;

@@ -9,6 +9,10 @@ public class Position extends AState {
         this.column = column;
     }
 
+    /**
+     * @param o an object value to check if equal to this position
+     * @return true if equal, else: return false
+     */
     public boolean equals(Object o){
         if (this == o)
             return true;
@@ -19,6 +23,12 @@ public class Position extends AState {
             return false;
         return  p.column==this.column;
     }
+
+
+    /**
+     * @param p a position value to check if equal to this position
+     * @return true if equal, else: return false
+     */
     public boolean equals(Position p){
         if(this.row!=(p.row))
             return false;

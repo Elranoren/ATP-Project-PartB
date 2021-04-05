@@ -67,6 +67,11 @@ public class SearchableMaze implements ISearchable {
             if (m.getMaze()[1][0] == 0)
                 addToList(s,new Position(1, 0), 10,stateNeighbor);
         }
+        if(m.getRows()>1 && m.getColumns()>1)  {
+            p = new Position(1, 1);
+            if (m.getMaze()[1][0] == 0)
+                addToList(s,new Position(1, 1), 15,stateNeighbor);
+        }
     }
 
 

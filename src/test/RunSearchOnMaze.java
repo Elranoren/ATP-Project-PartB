@@ -1,14 +1,22 @@
 package test;
 import algorithms.mazeGenerators.IMazeGenerator;
-import algorithms.mazeGenerators.Maze;
+import algorithms.mazeGenerators.*;
 import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.search.*;
 import java.util.ArrayList;
     public class RunSearchOnMaze {
         public static void main(String[] args) {
-            IMazeGenerator mg = new MyMazeGenerator();
-            Maze maze = mg.generate(2, 1);
+            int[][] map = {{0,0,0,0,0},{0,0,1,1,0},{1,0,0,1,0},{1,1,0,0,0}};
+            Position start = new Position(0,0);
+            Position end = new Position(2,4);
+            Maze maze = new Maze(4,5);
+            maze.setMaze(map);
+            maze.setStartPosition(start);
+            maze.setGoalPosition(end);
             maze.print();
+            //IMazeGenerator mg = new MyMazeGenerator();
+            //Maze maze = mg.generate(2, 1);
+            //maze.print();
             SearchableMaze searchableMaze = new SearchableMaze(maze);
             solveProblem(searchableMaze, new BreadthFirstSearch());
             solveProblem(searchableMaze, new DepthFirstSearch());

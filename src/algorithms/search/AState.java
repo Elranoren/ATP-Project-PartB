@@ -2,12 +2,13 @@ package algorithms.search;
 
 public abstract class AState {
     private String stateName;
-    private int cost;
+    private double cost;
     private AState preAState;
 
     public AState() {
         this.cost = 0;
         this.preAState = null;
+
     }
 
     public abstract String getStateName() ;
@@ -16,11 +17,11 @@ public abstract class AState {
         this.stateName = positionName;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 

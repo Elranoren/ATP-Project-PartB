@@ -25,9 +25,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     @Override
     public Solution solve(ISearchable obj) {
         List<AState> curStateNeighbors;
-        Map<String,Integer> visit = new HashMap<String,Integer>();
+        Map<String,AState> visit = new HashMap<String,AState>();
         s.push(obj.getSourceState());
-        visit.put(obj.getSourceState().getStateName(),1);
+        visit.put(obj.getSourceState().getStateName(),obj.getSourceState());
 
         while(!(s.isEmpty()))
         {
@@ -43,7 +43,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                         if(topState.equals(obj.getTargetState())==false)
                         {
                             s.push(neigState);
-                            visit.put(neigState.getStateName(),1);
+                            visit.put(neigState.getStateName(),neigState);
                         }
                         else {
                             return returnPath(topState);

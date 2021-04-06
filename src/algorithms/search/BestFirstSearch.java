@@ -2,6 +2,8 @@ package algorithms.search;
 
 import algorithms.search.ASearchingAlgorithm;
 
+import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class BestFirstSearch extends BreadthFirstSearch {
@@ -10,7 +12,9 @@ public class BestFirstSearch extends BreadthFirstSearch {
         q = new PriorityQueue<>(new ComperBestFirstSearch());
         numberOfNodesEvaluated = 0;
     }
+
     public String getName() {
         return "BestFirstSearch";
     }
+
 }

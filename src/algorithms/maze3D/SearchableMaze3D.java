@@ -4,6 +4,7 @@ import algorithms.search.AState;
 import algorithms.search.ISearchable;
 
 import java.util.List;
+import java.util.Map;
 
 public class SearchableMaze3D implements ISearchable {
     @Override

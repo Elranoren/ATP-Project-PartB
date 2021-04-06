@@ -14,9 +14,6 @@ public class MazeState extends AState {
         return mazeP;
     }
 
-    public void setMazeP(Position mazeP) {
-        this.mazeP.setPosition(mazeP);
-    }
 
     /**
      * @param o an object value to check if equal to this MazeState

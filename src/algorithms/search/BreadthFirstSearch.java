@@ -27,10 +27,12 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
     public Solution solve(ISearchable obj) {
         this.q.clear();
         List<AState> curStateNeighbors;
-        Map<String, Integer> visit = new HashMap<String, Integer>();
+
+        Map<String, AState> visit = new HashMap<String, AState>();
         q.add(obj.getSourceState());
         this.numberOfNodesEvaluated++;
-        visit.put(obj.getSourceState().getStateName(), 1);
+        visit.put(obj.getSourceState().getStateName(), obj.getSourceState());
+
 
         while (!(q.isEmpty())) {
             AState frontState = q.poll();
@@ -40,16 +42,22 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
                 ) {
                     if (visit.get(neigState.getStateName()) == null) {
                         neigState.setPreAState(frontState);
-                        //neigState.setDist(curStateNeighbors.);
+
                         if (frontState.equals(obj.getTargetState()) == false) {
                             q.add(neigState);
                             this.numberOfNodesEvaluated++;
-                            visit.put(neigState.getStateName(), 1);
-                        } else
+                            visit.put(neigState.getStateName(), neigState);
+
+                        } else {
+
                             return returnPath(frontState);
+
+                        }
                     }
                 }
-            } else {
+            }
+            else {
+
                 return returnPath(frontState);
             }
         }
@@ -58,7 +66,4 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
     }
 
 
-    public void setQ(Queue<AState> q) {
-        this.q = q;
-    }
 }

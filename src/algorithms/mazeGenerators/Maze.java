@@ -4,7 +4,6 @@ import algorithms.search.*;
 import java.util.List;
 
 public class Maze{
-    private int rows , columns;
     private Position start,end;
     private int[][] maze;
 
@@ -12,28 +11,22 @@ public class Maze{
      * @param rows Maze rows
      * @param columns Maze columns
      */
-    public Maze(int rows, int columns) {
-        this.rows = rows;
-        this.columns = columns;
-        maze = new int[rows][columns];
+    public Maze(Position start , Position end , int [][] map) {
+
+        maze = map;
+        this.start = start;
+        this.end = end;
 
         }
 
     public int getRows() {
-        return rows;
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
+        return this.maze.length;
     }
 
     public int getColumns() {
-        return columns;
+        return this.maze[0].length;
     }
 
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
 
     public int[][] getMaze() {
         return maze;
@@ -62,8 +55,8 @@ public class Maze{
     public void print() {
 
         System.out.print("{ ");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
              boolean isStart = i == start.getRowIndex() && j==start.getColumnIndex();
              boolean isEnd = i == end.getRowIndex() && j==end.getColumnIndex();
              if(isStart){
@@ -77,9 +70,9 @@ public class Maze{
              }
              else
                  System.out.print("1 ");
-             if(j==columns-1){
+             if(j==getColumns()-1){
                  System.out.print("}");
-                 if(i!=rows-1){
+                 if(i!=getRows()-1){
                  System.out.print("\n");
                  System.out.print("{ ");
                  }

@@ -11,7 +11,7 @@ public class MyMazeGenerator extends AMazeGenerator{
             rows=2;
             columns=2;
         }
-        Maze m = new Maze(rows,columns);
+        Maze m = new EmptyMazeGenerator().generate(rows,columns);
         setAllWall(m);
         Random r = new Random();
         Position p =randomPosOnFrame(rows,columns);
@@ -69,7 +69,7 @@ public class MyMazeGenerator extends AMazeGenerator{
                 neighbStart.add(new Position(m.getStartPosition().getRowIndex() -1,m.getStartPosition().getColumnIndex())) ;
             if ( m.getStartPosition().getColumnIndex()+1 < m.getColumns())
                 neighbStart.add(new Position(m.getStartPosition().getRowIndex() ,m.getStartPosition().getColumnIndex()+1)) ;
-            if ( m.getStartPosition().getColumnIndex()-1 >= m.getColumns())
+            if ( m.getStartPosition().getColumnIndex()-1 >= 0)
                 neighbStart.add(new Position(m.getStartPosition().getRowIndex() ,m.getStartPosition().getColumnIndex()-1)) ;
             Collections.shuffle(neighbStart);
             Position p = neighbStart.get(0);
@@ -118,30 +118,11 @@ public class MyMazeGenerator extends AMazeGenerator{
                 validNeighbor.add(temp_p);
 
         }
-        if (p.getRowIndex()==0 && p.getColumnIndex()==0) {
-            zeroStart (validNeighbor ,  m);
-        }
+
 
     }
 
-    /**
-     * @param validNeighbor list of valid neighbors of position {0,0}
-     * @param m our maze
-     */
-    public void zeroStart (List<Position>validNeighbor , Maze m)
-    {
-        Position temp_p;
-        if (m.getColumns()>1) {
-            temp_p = new Position(0, 1);
-            if (cellVisitedMap.get(temp_p.toString()) == 0)
-                validNeighbor.add(temp_p);
-        }
-        if(m.getRows()>1) {
-            temp_p = new Position(1, 0);
-            if (cellVisitedMap.get(temp_p.toString()) == 0)
-                validNeighbor.add(temp_p);
-        }
-    }
+
 
     /**
      * @param p current position to be check

@@ -52,10 +52,10 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
     }
 
     public void setAllWall3D(Maze3D m) {
-        for (int i = 0; i < m.getRows(); i++) {
-            for (int j = 0; j < m.getColumns(); j++) {
-                for (int k = 0; k < m.getDepth(); k++) {
-                    Position3D p = new Position3D(i, j, k);
+        for (int i = 0; i < m.getDepth(); i++) {
+            for (int j = 0; j < m.getRows(); j++) {
+                for (int k = 0; k < m.getColumns(); k++) {
+                    Position3D p = new Position3D(i,j,k);
                     cellVisitedMap.put(p.toString(), 0);
                     m.getMap()[i][j][k] = 1;
                 }
@@ -141,9 +141,9 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
                 c++;
 
         }
-        x = p.getColumnIndex()-1;
-        if(p.getColumnIndex()-1==-1) x=1;
-        for (int i = x; i < p.getRowIndex()+2 && i>=0 && i<=m.getRows()-1; i+=2) {
+        x = p.getDepthIndex()-1;
+        if(p.getDepthIndex()-1==-1) x=1;
+        for (int i = x; i < p.getDepthIndex()+2 && i>=0 && i<=m.getDepth()-1; i+=2) {
             temp_p = new Position3D(i,p.getRowIndex(),p.getColumnIndex());
             if(cellVisitedMap.get(temp_p.toString())==1)
                 c++;

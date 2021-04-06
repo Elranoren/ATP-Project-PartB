@@ -1,5 +1,7 @@
 package algorithms.maze3D;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Maze3D {
 
@@ -23,15 +25,15 @@ public class Maze3D {
     }
 
     public int getRows() {
-        return this.maze3D.length;
-    }
-
-    public int getColumns() {
         return this.maze3D[0].length;
     }
 
-    public int getDepth() {
+    public int getColumns() {
         return this.maze3D[0][0].length;
+    }
+
+    public int getDepth() {
+        return this.maze3D.length;
     }
 
     public void setMaze(int[][][] maze3D) {
@@ -55,7 +57,6 @@ public class Maze3D {
     }
 
     public void print() {
-
         System.out.print("{ ");
         System.out.print("\n");
 
@@ -70,7 +71,7 @@ public class Maze3D {
                         System.out.print("S ");
                     } else if (isEnd) {
                         System.out.print("E ");
-                    } else if (maze3D[i][j][k] == 0) {
+                    } else if (maze3D[k][i][j] == 0) {
                         System.out.print("0 ");
                     } else
                         System.out.print("1 ");
@@ -87,7 +88,8 @@ public class Maze3D {
             }
 
             System.out.print("\n");
-            System.out.print("----------------");
+
+            System.out.print(IntStream.range(0,( (getColumns()+2)*2 )-1).mapToObj(i -> "-").collect(Collectors.joining("")));
             System.out.print("\n");
 
 

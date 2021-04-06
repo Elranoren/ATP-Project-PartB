@@ -17,7 +17,6 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
         Solution sol = new Solution();
         sol.getSolutionPath().add(0,state);
         while (state.getPreAState() !=null){
-            this.numberOfNodesEvaluated++;
             state=state.getPreAState();
             sol.getSolutionPath().add(0,state);
         }

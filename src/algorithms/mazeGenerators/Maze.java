@@ -8,8 +8,8 @@ public class Maze{
     private int[][] maze;
 
     /**
-     * @param rows Maze rows
-     * @param columns Maze columns
+     * @param start start position of the maze
+     * @param end end position of th maze
      */
     public Maze(Position start , Position end , int [][] map) {
 

@@ -104,6 +104,9 @@ public class MyMazeGenerator extends AMazeGenerator{
     public void updateValidNeighbor(Position p , Maze m){
         Position temp_p;
         //check cell columns neighbords and add the neighbords that not visited
+        int x = p.getColumnIndex()-1;
+        if(p.getColumnIndex()-1==-1)
+            x=1;
         for (int i = p.getColumnIndex()-1; i < p.getColumnIndex()+2 && i>=0 && i<=m.getColumns()-1; i+=2) {
             temp_p = new Position(p.getRowIndex(),i);
             if(cellVisitedMap.get(temp_p.toString())==0)
@@ -112,6 +115,9 @@ public class MyMazeGenerator extends AMazeGenerator{
         }
 
         //check cell rows neighbords and add the neighbords that not visited
+        x = p.getRowIndex()-1;
+        if(p.getRowIndex()-1==-1)
+            x=1;
         for (int i = p.getRowIndex()-1; i < p.getRowIndex()+2 && i>=0 && i<=m.getRows()-1; i+=2) {
             temp_p = new Position(i,p.getColumnIndex());
             if(cellVisitedMap.get(temp_p.toString())==0)
@@ -133,7 +139,10 @@ public class MyMazeGenerator extends AMazeGenerator{
         Position temp_p;
         int c = 0;
         //check cell columns neighbords and add the neighbords that not visited
-        for (int i = p.getColumnIndex()-1; i < p.getColumnIndex()+2 && i>=0 && i<=m.getColumns()-1; i+=2) {
+        int x = p.getColumnIndex()-1;
+        if(p.getColumnIndex()-1==-1)
+            x=1;
+        for (int i = x; i < p.getColumnIndex()+2 && i>=0 && i<=m.getColumns()-1; i+=2) {
             temp_p = new Position(p.getRowIndex(),i);
             if(cellVisitedMap.get(temp_p.toString())==1)
                 c++;
@@ -141,7 +150,10 @@ public class MyMazeGenerator extends AMazeGenerator{
         }
 
         //check cell rows neighbords and add the neighbords that not visited
-        for (int i = p.getRowIndex()-1; i < p.getRowIndex()+2 && i>=0 && i<=m.getRows()-1; i+=2) {
+        x = p.getColumnIndex()-1;
+        if(p.getColumnIndex()-1==-1)
+            x=1;
+        for (int i = x; i < p.getRowIndex()+2 && i>=0 && i<=m.getRows()-1; i+=2) {
             temp_p = new Position(i,p.getColumnIndex());
             if(cellVisitedMap.get(temp_p.toString())==1)
                 c++;

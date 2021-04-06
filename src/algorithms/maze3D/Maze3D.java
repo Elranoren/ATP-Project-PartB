@@ -3,48 +3,35 @@ package algorithms.maze3D;
 
 public class Maze3D {
 
-    private int rows , columns, depth;
-    private Position3D start,end;
+    private Position3D start, end;
     private int[][][] maze3D;
 
     /**
-     * @param rows Maze rows
+     * @param rows    Maze rows
      * @param columns Maze columns
      */
-    public Maze3D(int rows, int columns, int depth) {
-        this.rows = rows;
-        this.columns = columns;
-        this.depth =depth;
-        maze3D = new int[depth][rows][columns];
+    public Maze3D(Position3D start, Position3D end, int[][][] map) {
+        maze3D = map;
+        this.start = start;
+        this.end = end;
 
     }
 
-    public int getRows() {
-        return rows;
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-    public int getDepth() {
-        return depth;
-    }
-
-    public void setDepth(int depth) {
-        this.depth = depth;
-    }
-
-
-    public int getColumns() {
-        return columns;
-    }
-
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
 
     public int[][][] getMap() {
         return maze3D;
+    }
+
+    public int getRows() {
+        return this.maze3D.length;
+    }
+
+    public int getColumns() {
+        return this.maze3D[0].length;
+    }
+
+    public int getDepth() {
+        return this.maze3D[0][0].length;
     }
 
     public void setMaze(int[][][] maze3D) {
@@ -68,9 +55,46 @@ public class Maze3D {
     }
 
     public void print() {
+
+        System.out.print("{ ");
+        System.out.print("\n");
+
+        for (int k = 0; k < getDepth(); k++) {
+            System.out.print("{ ");
+            for (int i = 0; i < getRows(); i++) {
+                for (int j = 0; j < getColumns(); j++) {
+
+                    boolean isStart = i == start.getRowIndex() && j == start.getColumnIndex() && k == start.getDepthIndex();
+                    boolean isEnd = i == end.getRowIndex() && j == end.getColumnIndex() && k == end.getDepthIndex();
+                    if (isStart) {
+                        System.out.print("S ");
+                    } else if (isEnd) {
+                        System.out.print("E ");
+                    } else if (maze3D[i][j][k] == 0) {
+                        System.out.print("0 ");
+                    } else
+                        System.out.print("1 ");
+                    if (j == getColumns() - 1) {
+                        System.out.print("}");
+                        if (i != getRows() - 1) {
+                            System.out.print("\n");
+                            System.out.print("{ ");
+                        }
+                    }
+                }
+
+
+            }
+
+            System.out.print("\n");
+            System.out.print("----------------");
+            System.out.print("\n");
+
+
+
+
         }
 
-
-
-
+        System.out.print("}");
+    }
 }

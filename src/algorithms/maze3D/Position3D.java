@@ -5,7 +5,7 @@ import algorithms.search.AState;
 public class Position3D extends AState {
     private int depth, row , column;
 
-    public Position3D(int row, int column, int depth) {
+    public Position3D(int depth, int row, int column) {
         this.depth = depth;
         this.row = row;
         this.column = column;

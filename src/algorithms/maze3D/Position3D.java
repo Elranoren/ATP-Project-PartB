@@ -1,5 +1,6 @@
 package algorithms.maze3D;
 
+import algorithms.mazeGenerators.Position;
 import algorithms.search.AState;
 
 public class Position3D extends AState {
@@ -13,7 +14,7 @@ public class Position3D extends AState {
     }
 
     public String toString() {
-        return "{" + this.depth + "," + this.column + "," + this.row + "}";
+        return "{" + this.depth + "," + this.row  + "," + this.column + "}";
     }
 
     @Override
@@ -27,6 +28,18 @@ public class Position3D extends AState {
 
     public void setRowIndex(int row) {
         this.row = row;
+    }
+    public boolean equals(Object o){
+        if (this == o)
+            return true;
+        if((o instanceof Position3D)==false)
+            return false;
+        Position3D p = (Position3D) o;
+        if(this.row!=(p.row))
+            return false;
+        if(this.depth!=(p.depth))
+            return false;
+        return  p.column==this.column;
     }
 
     public int getColumnIndex() {

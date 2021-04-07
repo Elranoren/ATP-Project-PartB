@@ -9,8 +9,9 @@ public class Maze3D {
     private int[][][] maze3D;
 
     /**
-     * @param rows    Maze rows
-     * @param columns Maze columns
+     * @param start The start position of the maze
+     * @param end The end position of the maze
+     * @param map The map
      */
     public Maze3D(Position3D start, Position3D end, int[][][] map) {
         maze3D = map;

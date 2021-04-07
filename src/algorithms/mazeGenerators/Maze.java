@@ -10,6 +10,7 @@ public class Maze{
     /**
      * @param start start position of the maze
      * @param end end position of th maze
+     * @param map the maze
      */
     public Maze(Position start , Position end , int [][] map) {
 

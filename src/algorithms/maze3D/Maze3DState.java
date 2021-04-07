@@ -20,19 +20,19 @@ public class Maze3DState extends AState {
         if (this==o)
             return true;
         else{
-            if (o instanceof MazeState){
-                MazeState ms=(MazeState)o;
+            if (o instanceof Maze3DState){
+                Maze3DState ms=(Maze3DState)o;
                 return (ms.equals(this.mazeP));
             }
             return false;
         }
     }
 
-    public boolean equals(MazeState ms)
+    public boolean equals(Maze3DState ms)
     {
         return (ms.equals(this.mazeP));
     }
-    public boolean equals(Position p)
+    public boolean equals(Position3D p)
     {
         if (mazeP!=null)
             return ((this.mazeP).equals(p));
@@ -46,7 +46,7 @@ public class Maze3DState extends AState {
 
     @Override
     public String getStateName() {
-        return null;
+        return this.toString();
     }
 
 

@@ -9,7 +9,7 @@ public class EmptyMazeGenerator extends AMazeGenerator {
     @Override
     public Maze generate(int rows, int columns) {
         int[][] maze = new int[rows][columns];
-        Maze m = new Maze(null,null,maze);
+        Maze m = new Maze(new Position(0,0),new Position(rows-1,columns-1),maze);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 m.getMaze()[i][j] = 0;

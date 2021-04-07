@@ -6,17 +6,17 @@ import algorithms.search.*;
 import java.util.ArrayList;
     public class RunSearchOnMaze {
         public static void main(String[] args) {
-            int[][] map = {{0,0,0,0,0},{0,0,1,1,0},{1,0,0,1,0},{1,1,0,0,0}};
+            int[][] map = {{0,0,1,1},{0,0,0,0},{0,1,0,1},{0,0,0,1}};
             Position start = new Position(0,0);
-            Position end = new Position(2,4);
+            Position end = new Position(1,3);
             Maze maze = new Maze(start,end,map);
             maze.setMaze(map);
             maze.setStartPosition(start);
             maze.setGoalPosition(end);
             maze.print();
-            //IMazeGenerator mg = new MyMazeGenerator();
-            //Maze maze = mg.generate(2, 1);
-            //maze.print();
+//            IMazeGenerator mg = new MyMazeGenerator();
+//            Maze maze = mg.generate(100, 100);
+//            maze.print();
             SearchableMaze searchableMaze = new SearchableMaze(maze);
             solveProblem(searchableMaze, new BreadthFirstSearch());
             solveProblem(searchableMaze, new DepthFirstSearch());

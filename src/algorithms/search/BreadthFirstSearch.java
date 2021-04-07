@@ -54,6 +54,15 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
                         }
                     }
+
+                    else{
+                        if(neigState.getCost()<visit.get(neigState.getStateName()).getCost()){
+                            neigState.setPreAState(frontState);
+                            visit.remove(neigState.getStateName());
+                            visit.put(neigState.getStateName(),neigState);
+                        }
+                    }
+
                 }
             }
             else {

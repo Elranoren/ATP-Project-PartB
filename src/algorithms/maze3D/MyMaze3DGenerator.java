@@ -52,7 +52,9 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         return maze;
 
     }
-
+    /**
+     * @param m oue maze : set all the maze to walls
+     */
     public void setAllWall3D(Maze3D m) {
         for (int i = 0; i < m.getDepth(); i++) {
             for (int j = 0; j < m.getRows(); j++) {
@@ -65,7 +67,12 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         }
 
     }
-
+    /**
+     * @param row    int : number of rows ( of the maze)
+     * @param column int : number of columns ( of the maze)
+     * @param depth int : number of depths ( of the maze)
+     * @return Position value of random row and random column
+     */
     public Position3D randomPos3DOnFrame (int depth ,int row,int column)
     {
         Random r = new Random(); // randomaize the start position of the algoritem
@@ -80,7 +87,12 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         Position3D p = new Position3D(r_dep,r_row,r_col);
         return p;
     }
-
+    /**
+     * this func will update the valid neighbord list of p
+     *
+     * @param p current position to be check
+     * @param m our maze
+     */
     public void updateValidNeighbor3D(Position3D p , Maze3D m){
         Position3D temp_p;
         //check cell columns neighbords and add the neighbords that not visited
@@ -118,7 +130,11 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
 
 
     }
-
+    /**
+     * @param p current position to be check
+     * @param m our maze
+     * @return number of visited neighbords of current position
+     */
     public int countVisitedNeighbor3D(Position3D p , Maze3D m){
         Position3D temp_p;
         int c = 0;
@@ -154,7 +170,9 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         return c;
 
     }
-
+    /**
+     * @param m Maze to check if goalPosition is null
+     */
     public void checkNullGoalPos3D (Maze3D m){
         if ( m.getGoalPosition()==null)
         {

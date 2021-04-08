@@ -58,7 +58,12 @@ public class SearchableMaze3D implements ISearchable {
         }
         return stateNeighbor;
     }
-
+    /**
+     * @param s the presuccessor of "p"
+     * @param p  position value : possible neighbors state (of state s)
+     * @param cost the cost of the movement from "s" to "p"
+     * @param stateNeighbor list of all the possible neighbors state (of state s)
+     */
     public void addToList3D(AState s ,Position3D p, double cost, List<AState> stateNeighbor){
         Maze3DState msTmp = new Maze3DState(p, s,p.toString());
         msTmp.setCost(cost);

@@ -44,7 +44,7 @@ import java.util.ArrayList;
 //            maze.setGoalPosition(end);
 //            maze.print();
             IMazeGenerator mg = new MyMazeGenerator();
-            Maze maze = mg.generate(100, 100);
+            Maze maze = mg.generate(-4, -5);
             maze.print();
             SearchableMaze searchableMaze = new SearchableMaze(maze);
             solveProblem(searchableMaze, new BreadthFirstSearch());

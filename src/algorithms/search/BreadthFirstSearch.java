@@ -1,7 +1,4 @@
 package algorithms.search;
-
-import algorithms.search.ASearchingAlgorithm;
-
 import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
@@ -32,8 +29,6 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         q.add(obj.getSourceState());
         this.numberOfNodesEvaluated++;
         visit.put(obj.getSourceState().getStateName(), obj.getSourceState());
-
-
         while (!(q.isEmpty())) {
             AState frontState = q.poll();
             if (!frontState.equals(obj.getTargetState())) {

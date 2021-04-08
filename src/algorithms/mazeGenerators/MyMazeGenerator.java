@@ -1,7 +1,4 @@
 package algorithms.mazeGenerators;
-import algorithms.maze3D.Maze3D;
-
-import java.awt.*;
 import java.util.*;
 import java.util.List;
 
@@ -24,9 +21,7 @@ public class MyMazeGenerator extends AMazeGenerator {
         m.setStartPosition(p);
         m.getMaze()[p.getRowIndex()][p.getColumnIndex()] = 0;
         updateValidNeighbor(p, m);
-       // Position s = setStartP(m);
-       // m.setStartPosition(s);
-       // updateValidNeighbor(s,m);
+
 
             while (validNeighbor.isEmpty() == false) {
                 int index = r.nextInt(validNeighbor.size());
@@ -170,13 +165,5 @@ public class MyMazeGenerator extends AMazeGenerator {
     }
 
 
-    public Position getStartP(Maze maze) {
-        int c=0;
-        int r=0;
-        if(maze.getStartPosition().getRowIndex()==0)
-            c=maze.getColumns()-1;
-        if(maze.getStartPosition().getRowIndex()==0)
-            r=maze.getRows()-1;
-        return new Position(r,c);
-    }
+
 }

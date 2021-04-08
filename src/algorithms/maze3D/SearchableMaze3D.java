@@ -1,13 +1,8 @@
 package algorithms.maze3D;
-
-import algorithms.mazeGenerators.Position;
 import algorithms.search.AState;
 import algorithms.search.ISearchable;
-import algorithms.search.MazeState;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class SearchableMaze3D implements ISearchable {
     private Maze3D m;
@@ -25,12 +20,12 @@ public class SearchableMaze3D implements ISearchable {
             x=1;
         for (int i=x; i <p.getRowIndex()+2 && i>=0 && i<=m.getRows()-1 && p.getColumnIndex()<=m.getColumns()-1; i+=2) {
             if (m.getMap()[p.getDepthIndex()][i][p.getColumnIndex()]==0) {
-                if (p.getColumnIndex()-1 >=0)
-                    if (m.getMap()[p.getDepthIndex()][i][p.getColumnIndex()-1]==0)
-                        addToList3D(s,new Position3D(p.getDepthIndex(),i, p.getColumnIndex() - 1), 15,stateNeighbor);
-                if (p.getColumnIndex()+1 <=m.getColumns()-1)
-                    if (m.getMap()[p.getDepthIndex()][i][p.getColumnIndex()+1]==0)
-                        addToList3D(s,new Position3D(p.getDepthIndex(),i, p.getColumnIndex() + 1), 15,stateNeighbor);
+                //if (p.getColumnIndex()-1 >=0)
+                   // if (m.getMap()[p.getDepthIndex()][i][p.getColumnIndex()-1]==0)
+                       // addToList3D(s,new Position3D(p.getDepthIndex(),i, p.getColumnIndex() - 1), 15,stateNeighbor);
+             //   if (p.getColumnIndex()+1 <=m.getColumns()-1)
+                    //if (m.getMap()[p.getDepthIndex()][i][p.getColumnIndex()+1]==0)
+                       // addToList3D(s,new Position3D(p.getDepthIndex(),i, p.getColumnIndex() + 1), 15,stateNeighbor);
                 addToList3D(s,new Position3D(p.getDepthIndex(),i, p.getColumnIndex()), 10,stateNeighbor);
             }
         }
@@ -39,12 +34,12 @@ public class SearchableMaze3D implements ISearchable {
             x=1;
         for (int i = x; i <p.getColumnIndex()+2 && i>=0 && i<=m.getColumns()-1 && p.getRowIndex()<=m.getRows()-1; i+=2) {
             if (m.getMap()[p.getDepthIndex()][p.getRowIndex()][i]==0) {
-                if (p.getRowIndex()-1 >=0)
-                    if (m.getMap()[p.getDepthIndex()][p.getRowIndex()-1][i]==0)
-                        addToList3D(s,new Position3D(p.getDepthIndex(),p.getRowIndex() - 1, i), 15,stateNeighbor);
-                if (p.getRowIndex()+1 <=m.getRows()-1)
-                    if (m.getMap()[p.getDepthIndex()][p.getRowIndex()+1][i]==0)
-                        addToList3D(s,new Position3D(p.getDepthIndex(),p.getRowIndex()+1,i), 15,stateNeighbor);
+//                if (p.getRowIndex()-1 >=0)
+//                    if (m.getMap()[p.getDepthIndex()][p.getRowIndex()-1][i]==0)
+//                        addToList3D(s,new Position3D(p.getDepthIndex(),p.getRowIndex() - 1, i), 15,stateNeighbor);
+//                if (p.getRowIndex()+1 <=m.getRows()-1)
+//                    if (m.getMap()[p.getDepthIndex()][p.getRowIndex()+1][i]==0)
+//                        addToList3D(s,new Position3D(p.getDepthIndex(),p.getRowIndex()+1,i), 15,stateNeighbor);
                 addToList3D(s,new Position3D(p.getDepthIndex(),p.getRowIndex(), i), 10,stateNeighbor);
             }
         }
@@ -61,7 +56,7 @@ public class SearchableMaze3D implements ISearchable {
     }
 
     public void addToList3D(AState s ,Position3D p, double cost, List<AState> stateNeighbor){
-        Maze3DState msTmp = new Maze3DState(p, s);
+        Maze3DState msTmp = new Maze3DState(p, s,p.toString());
         msTmp.setCost(cost);
         if (s!= null)
             msTmp.setCost(cost+s.getCost());
@@ -71,14 +66,14 @@ public class SearchableMaze3D implements ISearchable {
     @Override
     public AState getSourceState() {
         Position3D p= this.m.getStartPosition();
-        Maze3DState ms= new Maze3DState(p,null);
+        Maze3DState ms= new Maze3DState(p,null,p.toString());
         return ms;
     }
 
     @Override
     public AState getTargetState() {
         Position3D p= this.m.getGoalPosition();
-        Maze3DState ms= new Maze3DState(p,p.getPreAState());
+        Maze3DState ms= new Maze3DState(p,null,p.toString());
         return ms;
     }
 }

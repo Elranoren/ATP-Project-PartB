@@ -1,7 +1,5 @@
 package algorithms.search;
 
-import algorithms.search.ASearchingAlgorithm;
-
 import java.util.*;
 
 public class DepthFirstSearch extends ASearchingAlgorithm {

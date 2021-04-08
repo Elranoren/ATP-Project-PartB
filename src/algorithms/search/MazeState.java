@@ -4,11 +4,11 @@ import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState {
         private Position mazeP;
-        private AState preSuccessor;
 
-    public MazeState(Position mazeP , AState preSuccessor) {
+
+    public MazeState(Position mazeP , AState preSuccessor,String stateName) {
+        super(preSuccessor,stateName);
         this.mazeP = mazeP;
-        this.preSuccessor = preSuccessor;
     }
     public Position getMazeP() {
         return mazeP;
@@ -36,10 +36,7 @@ public class MazeState extends AState {
      * @param ms a MazeState value to check if equal to this MazeState
      * @return true if equal, else: return false
      */
-    public boolean equals(MazeState ms)
-    {
-        return (ms.equals(this.mazeP));
-    }
+
     public boolean equals(Position p)
     {
         if (mazeP!=null)
@@ -49,11 +46,11 @@ public class MazeState extends AState {
 
     @Override
     public String toString() {
-        return this.mazeP.toString();
+        return this.stateName;
     }
 
     @Override
     public String getStateName() {
-        return this.toString();
+        return this.stateName;
     }
 }

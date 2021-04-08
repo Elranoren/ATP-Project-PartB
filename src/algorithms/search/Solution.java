@@ -13,8 +13,4 @@ public class Solution {
     public ArrayList<AState> getSolutionPath() {
         return sol;
     }
-
-    public void setSol(ArrayList<AState> sol) {
-        this.sol = sol;
-    }
 }

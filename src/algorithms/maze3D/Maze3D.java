@@ -99,5 +99,6 @@ public class Maze3D {
         }
 
         System.out.print("}");
+        System.out.print("\n");
     }
 }

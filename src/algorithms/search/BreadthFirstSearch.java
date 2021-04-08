@@ -22,6 +22,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
      */
     @Override
     public Solution solve(ISearchable obj) {
+        if(obj.getSourceState()==null || obj.getTargetState()==null || obj ==null){
+            return new Solution();
+        }
         this.q.clear();
         List<AState> curStateNeighbors;
 

@@ -27,7 +27,7 @@ import java.util.ArrayList;
 //            maze.setGoalPosition(end);
 //            maze.print();
             IMazeGenerator3D mg = new MyMaze3DGenerator();
-            Maze3D maze = mg.generate(2, 2,2);
+            Maze3D maze = mg.generate(100, 100,100);
             maze.print();
             SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
             System.out.println(maze.getStartPosition());

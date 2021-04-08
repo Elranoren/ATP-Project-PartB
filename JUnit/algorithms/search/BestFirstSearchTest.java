@@ -1,9 +1,6 @@
 package algorithms.search;
 
-import algorithms.maze3D.IMaze3DGenerator;
-import algorithms.maze3D.Maze3D;
-import algorithms.maze3D.MyMaze3DGenerator;
-import algorithms.maze3D.SearchableMaze3D;
+import algorithms.maze3D.*;
 import algorithms.mazeGenerators.IMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
@@ -55,7 +52,7 @@ class BestFirstSearchTest {
     }
 
     @Test
-    void  PathCheck(){
+    void  CheapestPathCheck(){
         ArrayList<AState> solcheck = new ArrayList<AState>();
         solcheck.add(new MazeState(new Position(0,0),null,"{0,0}"));
         solcheck.add(new MazeState(new Position(1,1),null,"{1,1}"));
@@ -87,6 +84,20 @@ class BestFirstSearchTest {
         assertTrue(sp.size()==0);
 
     }
+    @Test
+    void NoSolution() {
+        int[][] m = {{0, 1, 1}, {1, 1, 1}, {1, 1, 0}};
+        Maze maze = new Maze(new Position(0, 0),new Position(m.length - 1, m[0].length - 1),m);
+        Solution solution = bestfs.solve(new SearchableMaze(maze));
+        assertEquals(solution.getSolutionPath().size(), 0);
+    }
 
+    @Test
+    void NoSolution3D() {
+        int[][][] m = {{{0, 1, 1}, {1, 1, 1}, {1, 1, 1}}, {{0, 1,1}, {1, 1, 1}, {1, 1, 0}}};
+        Maze3D maze = new Maze3D(new Position3D(0, 0,0),new Position3D(m.length - 1, m[0].length - 1 , m[0][0].length-1),m);
+        Solution solution = bestfs.solve(new SearchableMaze3D(maze));
+        assertEquals(solution.getSolutionPath().size(), 0);
+    }
 
 }

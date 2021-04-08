@@ -1,8 +1,4 @@
 package algorithms.maze3D;
-
-import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.Position;
-
 import java.util.*;
 
 

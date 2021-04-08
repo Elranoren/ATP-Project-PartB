@@ -1,7 +1,4 @@
 package algorithms.mazeGenerators;
-import algorithms.search.*;
-
-import java.util.List;
 
 public class Maze{
     private Position start,end;

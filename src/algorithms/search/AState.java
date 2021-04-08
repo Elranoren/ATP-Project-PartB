@@ -1,21 +1,22 @@
 package algorithms.search;
 
 public abstract class AState {
-    private String stateName;
+    protected String stateName;
     private double cost;
     private AState preAState;
 
-    public AState() {
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    public AState(AState preSuccessor , String stateName ) {
         this.cost = 0;
-        this.preAState = null;
+        this.preAState = preSuccessor;
+        this.stateName = stateName;
 
     }
 
     public abstract String getStateName() ;
-
-    public void setPositionName(String positionName) {
-        this.stateName = positionName;
-    }
 
     public double getCost() {
         return cost;
@@ -33,4 +34,6 @@ public abstract class AState {
     public void setPreAState(AState preAState) {
         this.preAState = preAState;
     }
+
+
 }

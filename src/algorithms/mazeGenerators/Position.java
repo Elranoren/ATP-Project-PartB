@@ -1,7 +1,6 @@
 package algorithms.mazeGenerators;
-import algorithms.search.AState;
 
-public class Position extends AState {
+public class Position{
     int row,column;
 
     public Position(int row, int column) {
@@ -60,7 +59,7 @@ public class Position extends AState {
         return "{" + this.row + "," + this.column + "}";
     }
 
-    @Override
+
     public String getStateName() {
         return this.toString();
     }

@@ -60,7 +60,8 @@ public class SearchableMaze implements ISearchable {
      * @param stateNeighbor list of all the possible neighbors state (of state s)
      */
     public void addToList(AState s ,Position p, double cost, List<AState> stateNeighbor){
-        MazeState msTmp = new MazeState(p, s);
+        MazeState msTmp = new MazeState(p, s,p.toString());
+        msTmp.setStateName(msTmp.getStateName());
         msTmp.setCost(cost);
         if (s!= null)
             msTmp.setCost(cost+s.getCost());
@@ -71,7 +72,7 @@ public class SearchableMaze implements ISearchable {
     @Override
     public AState getSourceState() {
         Position p= this.m.getStartPosition();
-        MazeState ms= new MazeState(p,null);
+        MazeState ms= new MazeState(p,null,p.toString());
         return ms;
     }
 
@@ -79,7 +80,7 @@ public class SearchableMaze implements ISearchable {
     @Override
     public AState getTargetState() {
         Position p= this.m.getGoalPosition();
-        MazeState ms= new MazeState(p,p.getPreAState());
+        MazeState ms= new MazeState(p,null,p.toString());
         return ms;
     }
 }

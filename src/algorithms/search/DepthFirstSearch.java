@@ -22,6 +22,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
      */
     @Override
     public Solution solve(ISearchable obj) {
+        if(obj.getSourceState()==null || obj.getTargetState()==null || obj ==null){
+            return new Solution();
+        }
         List<AState> curStateNeighbors;
         Map<String,AState> visit = new HashMap<String,AState>();
         s.push(obj.getSourceState());

@@ -9,6 +9,10 @@ import java.util.List;
 public class SearchableMaze implements ISearchable {
     private Maze m;
 
+    public Maze getM() {
+        return m;
+    }
+
     public SearchableMaze(Maze m) {
         this.m = m;
     }
@@ -71,6 +75,8 @@ public class SearchableMaze implements ISearchable {
 
     @Override
     public AState getSourceState() {
+        if(m==null)
+            return null;
         Position p= this.m.getStartPosition();
         MazeState ms= new MazeState(p,null,p.toString());
         return ms;
@@ -79,8 +85,12 @@ public class SearchableMaze implements ISearchable {
 
     @Override
     public AState getTargetState() {
+        if(m==null)
+            return null;
         Position p= this.m.getGoalPosition();
         MazeState ms= new MazeState(p,null,p.toString());
         return ms;
     }
+
+
 }

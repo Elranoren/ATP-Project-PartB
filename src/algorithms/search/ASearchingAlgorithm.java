@@ -1,5 +1,7 @@
 package algorithms.search;
 
+import algorithms.maze3D.Maze3D;
+
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
     protected int numberOfNodesEvaluated;
 
@@ -24,4 +26,13 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
         //System.out.println(cost);
         return sol;
     }
+
+    public long measureAlgorithmTimeMillisOnSearchingAlgorithm(ISearchable is) {
+        long start = System.currentTimeMillis();
+        this.solve(is);
+        long end = System.currentTimeMillis();
+        return end - start;
+    }
+
+
 }

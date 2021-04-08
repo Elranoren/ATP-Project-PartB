@@ -6,6 +6,12 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
     List<Position3D> validNeighbor = new ArrayList<Position3D>(); //the valid cells neighbor of spacific cell
     Map<String, Integer> cellVisitedMap = new HashMap<String, Integer>(); // the visited cells map
 
+    /**
+     * @param depth the depth of the maze
+     * @param row the row of the maze
+     * @param column the column of the maze
+     * @return a 3D maze
+     */
     @Override
     public Maze3D generate(int depth, int row, int column) {
         if ((depth < 2 && row < 2 && column < 2) || row == 0 || column == 0 || depth == 0) {

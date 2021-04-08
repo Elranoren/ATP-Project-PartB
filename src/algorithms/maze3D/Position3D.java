@@ -21,6 +21,10 @@ public class Position3D{
         return row;
     }
 
+    /**
+     * @param o an object to check if o equal to this
+     * @return true if equal, false if not equal
+     */
     public boolean equals(Object o){
         if (this == o)
             return true;

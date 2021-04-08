@@ -1,6 +1,6 @@
 package algorithms.search;
 
-import algorithms.maze3D.IMazeGenerator3D;
+import algorithms.maze3D.IMaze3DGenerator;
 import algorithms.maze3D.Maze3D;
 import algorithms.maze3D.MyMaze3DGenerator;
 import algorithms.maze3D.SearchableMaze3D;
@@ -26,7 +26,7 @@ class BestFirstSearchTest {
     }
     @Test
     void  TimeCheckTest3D(){
-        IMazeGenerator3D mg = new MyMaze3DGenerator();
+        IMaze3DGenerator mg = new MyMaze3DGenerator();
         Maze3D maze = mg.generate(100, 100,100);
         SearchableMaze3D sm = new SearchableMaze3D(maze);
         assertTrue(bestfs.measureAlgorithmTimeMillisOnSearchingAlgorithm(sm)<=60000);
@@ -45,7 +45,7 @@ class BestFirstSearchTest {
 
     @Test
     void  WrongParametersCheck3D(){
-        IMazeGenerator3D mg = new MyMaze3DGenerator();
+        IMaze3DGenerator mg = new MyMaze3DGenerator();
         Maze3D maze = mg.generate(-40,-19, -96);
         SearchableMaze3D sm = new SearchableMaze3D(maze);
         Solution s = bestfs.solve(sm);
@@ -87,5 +87,6 @@ class BestFirstSearchTest {
         assertTrue(sp.size()==0);
 
     }
+
 
 }

@@ -33,7 +33,7 @@ public class MazeState extends AState {
     }
 
     /**
-     * @param ms a MazeState value to check if equal to this MazeState
+     * @param p a position value to check if equal to this.mazeP
      * @return true if equal, else: return false
      */
 

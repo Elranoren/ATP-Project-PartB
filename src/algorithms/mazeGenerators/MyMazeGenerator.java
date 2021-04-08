@@ -6,6 +6,11 @@ public class MyMazeGenerator extends AMazeGenerator {
     List<Position> validNeighbor = new ArrayList<Position>(); //the valid cells neighbor of spacific cell
     Map<String, Integer> cellVisitedMap = new HashMap<String, Integer>(); // the visited cells map
 
+    /**
+     * @param rows    Maze rows
+     * @param columns Maze columns
+     * @return a maze
+     */
     @Override
     public Maze generate(int rows, int columns) {
         if ((rows < 2 && columns < 2) || rows == 0 || columns == 0) {
@@ -124,13 +129,8 @@ public class MyMazeGenerator extends AMazeGenerator {
             temp_p = new Position(i, p.getColumnIndex());
             if (cellVisitedMap.get(temp_p.toString()) == 0)
                 validNeighbor.add(temp_p);
-
         }
-
-
     }
-
-
     /**
      * @param p current position to be check
      * @param m our maze
@@ -147,9 +147,7 @@ public class MyMazeGenerator extends AMazeGenerator {
             temp_p = new Position(p.getRowIndex(), i);
             if (cellVisitedMap.get(temp_p.toString()) == 1)
                 c++;
-
         }
-
         //check cell rows neighbords and add the neighbords that not visited
         x = p.getRowIndex() - 1;
         if (p.getRowIndex() - 1 == -1)
@@ -158,7 +156,6 @@ public class MyMazeGenerator extends AMazeGenerator {
             temp_p = new Position(i, p.getColumnIndex());
             if (cellVisitedMap.get(temp_p.toString()) == 1)
                 c++;
-
         }
         return c;
 

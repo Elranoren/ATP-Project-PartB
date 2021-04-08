@@ -14,8 +14,6 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
     public String getName() {
         return "BreadthFirstSearch";
     }
-
-
     /**
      * @param obj The object that we want to search a path on
      * @return the path solution between the start to the goal

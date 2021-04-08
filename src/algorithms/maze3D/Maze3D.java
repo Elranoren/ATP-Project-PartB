@@ -57,10 +57,12 @@ public class Maze3D {
         this.end = p;
     }
 
+    /**
+     * print the maze3D
+     */
     public void print() {
         System.out.print("{ ");
         System.out.print("\n");
-
         for (int k = 0; k < getDepth(); k++) {
             System.out.print("{ ");
             for (int i = 0; i < getRows(); i++) {
@@ -84,20 +86,11 @@ public class Maze3D {
                         }
                     }
                 }
-
-
             }
-
             System.out.print("\n");
-
-            System.out.print(IntStream.range(0,( (getColumns()+2)*2 )-1).mapToObj(i -> "-").collect(Collectors.joining("")));
+            System.out.print(IntStream.range(0,( (getColumns()*2)+3)).mapToObj(i -> "-").collect(Collectors.joining("")));
             System.out.print("\n");
-
-
-
-
         }
-
         System.out.print("}");
         System.out.print("\n");
     }

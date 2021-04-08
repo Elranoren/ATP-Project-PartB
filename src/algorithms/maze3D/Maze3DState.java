@@ -12,6 +12,10 @@ public class Maze3DState extends AState {
         return mazeP;
     }
 
+    /**
+     * @param o an object to check if o equal to this
+     * @return true if equal, false if not equal
+     */
     public boolean equals(Object o)
     {
         if (this==o)
@@ -25,6 +29,10 @@ public class Maze3DState extends AState {
         }
     }
 
+    /**
+     * @param p postion3D to check if p is equal to this.mazeP
+     * @return
+     */
     public boolean equals(Position3D p)
     {
         if (mazeP!=null)

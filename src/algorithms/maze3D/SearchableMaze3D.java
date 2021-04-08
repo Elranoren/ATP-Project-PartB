@@ -11,6 +11,10 @@ public class SearchableMaze3D implements ISearchable {
         this.m = m;
     }
 
+    /**
+     * @param s a state that we will find all the possible neighbors state
+     * @return list of all the possible neighbors state (of state s)
+     */
     @Override
     public List<AState> getAllSuccessors(AState s) {
         List<AState> stateNeighbor=new ArrayList<AState>();

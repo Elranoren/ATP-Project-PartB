@@ -26,7 +26,10 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
         //System.out.println(cost);
         return sol;
     }
-
+    /**
+     * @param is the object to check on
+     * @return how much time the search takes
+     */
     public long measureAlgorithmTimeMillisOnSearchingAlgorithm(ISearchable is) {
         long start = System.currentTimeMillis();
         this.solve(is);

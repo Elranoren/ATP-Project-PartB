@@ -50,6 +50,9 @@ public class Maze{
         this.end = p;
     }
 
+    /**
+     * prints the maze
+     */
     public void print() {
 
         System.out.print("{ ");

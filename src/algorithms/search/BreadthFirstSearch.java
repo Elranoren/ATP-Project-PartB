@@ -19,9 +19,9 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
      * @return the path solution between the start to the goal
      */
     @Override
-    public Solution solve(ISearchable obj) {
+    public Solution solve(ISearchable obj) throws Exception {
         if(obj.getSourceState()==null || obj.getTargetState()==null || obj ==null){
-            return new Solution();
+            throw new Exception(" Null searchable object ");
         }
         this.q.clear();
         List<AState> curStateNeighbors;

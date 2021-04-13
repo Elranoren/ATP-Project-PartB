@@ -44,7 +44,12 @@ import java.util.ArrayList;
 //            maze.setGoalPosition(end);
 //            maze.print();
             IMazeGenerator mg = new MyMazeGenerator();
-            Maze maze = mg.generate(-4, -5);
+            Maze maze = null;
+            try {
+                maze = mg.generate(-4, -5);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             maze.print();
             SearchableMaze searchableMaze = new SearchableMaze(maze);
             solveProblem(searchableMaze, new BreadthFirstSearch());
@@ -54,7 +59,12 @@ import java.util.ArrayList;
         private static void solveProblem(ISearchable domain, ISearchingAlgorithm
                 searcher) {
 //Solve a searching problem with a searcher
-            Solution solution = searcher.solve(domain);
+            Solution solution = null;
+            try {
+                solution = searcher.solve(domain);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
 //Printing Solution Path
                     System.out.println("Solution path:");

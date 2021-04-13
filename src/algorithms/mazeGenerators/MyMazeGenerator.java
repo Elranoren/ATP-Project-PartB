@@ -12,10 +12,11 @@ public class MyMazeGenerator extends AMazeGenerator {
      * @return a maze
      */
     @Override
-    public Maze generate(int rows, int columns) {
-        if ((rows < 2 && columns < 2) || rows == 0 || columns == 0) {
-            rows = 2;
-            columns = 2;
+    public Maze generate(int rows, int columns) throws Exception {
+        if (rows < 2 || columns < 2) {
+            throw new Exception(" Bad arguments - (rows < 2 or columns < 2) ");
+            //rows = 2;
+            //columns = 2;
         }
         int[][] maze = new int[rows][columns];
         Maze m = new Maze(null, null, maze);

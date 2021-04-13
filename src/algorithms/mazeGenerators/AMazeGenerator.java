@@ -7,7 +7,7 @@ public abstract class  AMazeGenerator implements IMazeGenerator {
      * @param columns Maze columns
      * @return Maze
      */
-    public abstract Maze generate(int rows, int columns);
+    public abstract Maze generate(int rows, int columns) throws Exception;
 
     /**
      * @param rows Maze rows
@@ -16,7 +16,11 @@ public abstract class  AMazeGenerator implements IMazeGenerator {
      */
     public long measureAlgorithmTimeMillis(int rows , int columns){
         long start = System.currentTimeMillis();
-        Maze m = generate(rows,columns);
+        try {
+            generate(rows,columns);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         long end = System.currentTimeMillis();
         return end - start;
     }

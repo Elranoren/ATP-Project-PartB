@@ -39,7 +39,12 @@ import java.util.ArrayList;
         private static void solveProblem(ISearchable domain, ISearchingAlgorithm
                 searcher) {
 //Solve a searching problem with a searcher
-            Solution solution = searcher.solve(domain);
+            Solution solution = null;
+            try {
+                solution = searcher.solve(domain);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
 //Printing Solution Path
             System.out.println("Solution path:");

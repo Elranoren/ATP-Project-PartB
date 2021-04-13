@@ -5,18 +5,25 @@ import algorithms.mazeGenerators.IMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.mazeGenerators.Position;
+import com.sun.source.tree.AssertTree;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BestFirstSearchTest {
     private BestFirstSearch bestfs = new BestFirstSearch();
     @Test
-    void  TimeCheckTest(){
+    void  TimeCheckTest() {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(1000, 1000);
+        Maze maze = null;
+        try {
+            maze = mg.generate(1000, 1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         SearchableMaze sm = new SearchableMaze(maze);
         assertTrue(bestfs.measureAlgorithmTimeMillisOnSearchingAlgorithm(sm)<=60000);
 
@@ -24,30 +31,57 @@ class BestFirstSearchTest {
     @Test
     void  TimeCheckTest3D(){
         IMaze3DGenerator mg = new MyMaze3DGenerator();
-        Maze3D maze = mg.generate(100, 100,100);
+        Maze3D maze = null;
+        try {
+            maze = mg.generate(100, 100,100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         SearchableMaze3D sm = new SearchableMaze3D(maze);
         assertTrue(bestfs.measureAlgorithmTimeMillisOnSearchingAlgorithm(sm)<=60000);
 
     }
     @Test
+    void CheapestPathCheckVSBFS(){
+
+        IMazeGenerator mg = new MyMazeGenerator();
+        Maze m = null;
+        Solution solutionBest = null;
+        Solution solutionBFS = null;
+        double costBest=0;
+        double costBFS=0;
+        BreadthFirstSearch bfs = new BreadthFirstSearch();
+        for (int i = 0; i < 15 ; i++) {
+            try {
+                m =  mg.generate(200,200);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                solutionBest = bestfs.solve(new SearchableMaze(m));
+                costBest= solutionBest.getSolutionPath().get(solutionBest.getSolutionPath().size()-1).getCost();
+                solutionBFS = bfs.solve(new SearchableMaze(m));
+                costBFS= solutionBFS.getSolutionPath().get(solutionBFS.getSolutionPath().size()-1).getCost();
+                assertTrue(costBest<=costBFS);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
     void  WrongParametersCheck(){
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(-19, -96);
-        SearchableMaze sm = new SearchableMaze(maze);
-        Solution s = bestfs.solve(sm);
-        ArrayList<AState> sp = s.getSolutionPath();
-        assertTrue(sp.size()==3 || sp.size()==2 );
+        Exception exception = assertThrows(Exception.class, () -> mg.generate(-19, -96));
+        assertEquals(" Bad arguments - (rows < 2 or columns < 2) ", exception.getMessage());
 
     }
 
     @Test
     void  WrongParametersCheck3D(){
         IMaze3DGenerator mg = new MyMaze3DGenerator();
-        Maze3D maze = mg.generate(-40,-19, -96);
-        SearchableMaze3D sm = new SearchableMaze3D(maze);
-        Solution s = bestfs.solve(sm);
-        ArrayList<AState> sp = s.getSolutionPath();
-        assertTrue(sp.size()>=2 && sp.size()<=4);
+        Exception exception = assertThrows(Exception.class, () -> mg.generate(-40,-19, -96));
+        assertEquals(" Bad arguments - (depth < 2 or row < 2 or column < 2) ", exception.getMessage());
 
     }
 
@@ -65,7 +99,12 @@ class BestFirstSearchTest {
         maze.setStartPosition(start);
         maze.setGoalPosition(end);
         SearchableMaze sm = new SearchableMaze(maze);
-        Solution s = bestfs.solve(sm);
+        Solution s = null;
+        try {
+            s = bestfs.solve(sm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ArrayList<AState> sp = s.getSolutionPath();
         boolean flag = true;
         for (int i = 0; i < sp.size(); i++) {
@@ -79,16 +118,21 @@ class BestFirstSearchTest {
     @Test
     void  NullCheck(){
         SearchableMaze sm = new SearchableMaze(null);
-        Solution s = bestfs.solve(sm);
-        ArrayList<AState> sp = s.getSolutionPath();
-        assertTrue(sp.size()==0);
+        Exception exception = assertThrows(Exception.class, () -> bestfs.solve(sm));
+        assertEquals(" Null searchable object ", exception.getMessage());
+
 
     }
     @Test
     void NoSolution() {
         int[][] m = {{0, 1, 1}, {1, 1, 1}, {1, 1, 0}};
         Maze maze = new Maze(new Position(0, 0),new Position(m.length - 1, m[0].length - 1),m);
-        Solution solution = bestfs.solve(new SearchableMaze(maze));
+        Solution solution = null;
+        try {
+            solution = bestfs.solve(new SearchableMaze(maze));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals(solution.getSolutionPath().size(), 0);
     }
 
@@ -96,8 +140,15 @@ class BestFirstSearchTest {
     void NoSolution3D() {
         int[][][] m = {{{0, 1, 1}, {1, 1, 1}, {1, 1, 1}}, {{0, 1,1}, {1, 1, 1}, {1, 1, 0}}};
         Maze3D maze = new Maze3D(new Position3D(0, 0,0),new Position3D(m.length - 1, m[0].length - 1 , m[0][0].length-1),m);
-        Solution solution = bestfs.solve(new SearchableMaze3D(maze));
+        Solution solution = null;
+        try {
+            solution = bestfs.solve(new SearchableMaze3D(maze));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals(solution.getSolutionPath().size(), 0);
     }
+
+
 
 }

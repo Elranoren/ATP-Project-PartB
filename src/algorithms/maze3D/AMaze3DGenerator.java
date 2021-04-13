@@ -9,7 +9,11 @@ public abstract class AMaze3DGenerator implements IMaze3DGenerator {
      */
     public long measureAlgorithmTimeMillis(int depth, int row, int column) {
         long start = System.currentTimeMillis();
-        Maze3D m = generate(depth,row,column);
+        try {
+            Maze3D m = generate(depth,row,column);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         long end = System.currentTimeMillis();
         return end - start;
     }

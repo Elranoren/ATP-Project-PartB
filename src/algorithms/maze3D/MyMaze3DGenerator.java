@@ -13,11 +13,12 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
      * @return a 3D maze
      */
     @Override
-    public Maze3D generate(int depth, int row, int column) {
-        if ((depth < 2 && row < 2 && column < 2) || row == 0 || column == 0 || depth == 0) {
-            depth = 2;
-            row = 2;
-            column = 2;
+    public Maze3D generate(int depth, int row, int column) throws Exception {
+        if ((depth < 2 || row < 2 || column < 2)) {
+            throw new Exception(" Bad arguments - (depth < 2 or row < 2 or column < 2) ");
+            // depth = 2;
+            // row = 2;
+            //column = 2;
         }
         int[][][] map = new int[depth][row][column];
         Maze3D maze = new Maze3D(null,null,map);

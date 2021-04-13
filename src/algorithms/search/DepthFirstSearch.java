@@ -21,9 +21,9 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
      * @return the path solution between the start to the goal
      */
     @Override
-    public Solution solve(ISearchable obj) {
+    public Solution solve(ISearchable obj) throws Exception {
         if(obj.getSourceState()==null || obj.getTargetState()==null || obj ==null){
-            return new Solution();
+            throw new Exception(" Null searchable object ");
         }
         List<AState> curStateNeighbors;
         Map<String,AState> visit = new HashMap<String,AState>();

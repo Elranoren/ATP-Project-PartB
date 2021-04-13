@@ -32,7 +32,11 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
      */
     public long measureAlgorithmTimeMillisOnSearchingAlgorithm(ISearchable is) {
         long start = System.currentTimeMillis();
-        this.solve(is);
+        try {
+            this.solve(is);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         long end = System.currentTimeMillis();
         return end - start;
     }

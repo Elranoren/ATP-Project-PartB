@@ -5,7 +5,6 @@ import algorithms.mazeGenerators.IMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.mazeGenerators.Position;
-import com.sun.source.tree.AssertTree;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

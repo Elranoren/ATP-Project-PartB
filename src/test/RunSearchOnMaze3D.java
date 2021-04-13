@@ -3,8 +3,8 @@ import algorithms.maze3D.*;
 
 import algorithms.search.*;
 import java.util.ArrayList;
-    public class RunSearchOnMaze3D {
-        public static void main(String[] args) {
+public class RunSearchOnMaze3D {
+    public static void main(String[] args) {
 //            int[][][] map = {
 //                    {{0,0,0,0,0},
 //                    {0,0,1,1,0},
@@ -26,33 +26,36 @@ import java.util.ArrayList;
 //            maze.setStartPosition(start);
 //            maze.setGoalPosition(end);
 //            maze.print();
-            IMaze3DGenerator mg = new MyMaze3DGenerator();
-//            Maze3D maze = mg.generate(3, 3,3);
-//            maze.print();
-//            SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
-            //System.out.println(maze.getStartPosition());
-            //System.out.println(maze.getGoalPosition());
-//            solveProblem(searchableMaze, new BreadthFirstSearch());
-//            solveProblem(searchableMaze, new DepthFirstSearch());
-//            solveProblem(searchableMaze, new BestFirstSearch());
+        IMaze3DGenerator mg = new MyMaze3DGenerator();
+        Maze3D maze = null;
+        try {
+            maze = mg.generate(50, 50,50);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        private static void solveProblem(ISearchable domain, ISearchingAlgorithm
-                searcher) {
+        //maze.print();
+        SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
+        //System.out.println(maze.getStartPosition());
+        //System.out.println(maze.getGoalPosition());
+        solveProblem(searchableMaze, new BreadthFirstSearch());
+        solveProblem(searchableMaze, new DepthFirstSearch());
+        solveProblem(searchableMaze, new BestFirstSearch());
+    }
+    private static void solveProblem(ISearchable domain, ISearchingAlgorithm
+            searcher) {
 //Solve a searching problem with a searcher
-            Solution solution = null;
-            try {
-                solution = searcher.solve(domain);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
+        Solution solution = null;
+        try {
+            solution = searcher.solve(domain);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(String.format("'%s' algorithm - nodes evaluated: %s", searcher.getName(), searcher.getNumberOfNodesEvaluated()));
 //Printing Solution Path
-            System.out.println("Solution path:");
-            ArrayList<AState> solutionPath = solution.getSolutionPath();
-            for (int i = 0; i < solutionPath.size(); i++) {
-                System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
-            }
+        System.out.println("Solution path:");
+        ArrayList<AState> solutionPath = solution.getSolutionPath();
+        for (int i = 0; i < solutionPath.size(); i++) {
+            System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
         }
     }
-
-
+}

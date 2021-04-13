@@ -5,36 +5,36 @@ import algorithms.search.*;
 import java.util.ArrayList;
     public class RunSearchOnMaze3D {
         public static void main(String[] args) {
-            int[][][] map = {
-                    {{0,0,0,0,0},
-                    {0,0,1,1,0},
-                    {1,0,0,1,0},
-                    {1,1,0,0,0}} ,
-                    {{1,1,1,1,1},
-                            {1,1,1,1,1},
-                            {1,1,1,1,0},
-                            {1,1,1,1,1}},
-                    {{0,0,0,0,0},
-                            {0,0,1,1,0},
-                            {1,0,0,1,0},
-                            {1,1,0,0,0}}
-            };
-            Position3D start = new Position3D(0,0,0);
-            Position3D end = new Position3D(2,0,0);
-            Maze3D maze = new Maze3D(start,end,map);
-            maze.setMaze(map);
-            maze.setStartPosition(start);
-            maze.setGoalPosition(end);
-            maze.print();
-//            IMaze3DGenerator mg = new MyMaze3DGenerator();
-//            Maze3D maze = mg.generate(2, 2,2);
+//            int[][][] map = {
+//                    {{0,0,0,0,0},
+//                    {0,0,1,1,0},
+//                    {1,0,0,1,0},
+//                    {1,1,0,0,0}} ,
+//                    {{1,1,1,1,1},
+//                            {1,1,1,1,1},
+//                            {1,1,1,1,0},
+//                            {1,1,1,1,1}},
+//                    {{0,0,0,0,0},
+//                            {0,0,1,1,0},
+//                            {1,0,0,1,0},
+//                            {1,1,0,0,0}}
+//            };
+//            Position3D start = new Position3D(0,0,0);
+//            Position3D end = new Position3D(2,0,0);
+//            Maze3D maze = new Maze3D(start,end,map);
+//            maze.setMaze(map);
+//            maze.setStartPosition(start);
+//            maze.setGoalPosition(end);
 //            maze.print();
-            SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
+            IMaze3DGenerator mg = new MyMaze3DGenerator();
+//            Maze3D maze = mg.generate(3, 3,3);
+//            maze.print();
+//            SearchableMaze3D searchableMaze = new SearchableMaze3D(maze);
             //System.out.println(maze.getStartPosition());
             //System.out.println(maze.getGoalPosition());
-            solveProblem(searchableMaze, new BreadthFirstSearch());
-            solveProblem(searchableMaze, new DepthFirstSearch());
-            solveProblem(searchableMaze, new BestFirstSearch());
+//            solveProblem(searchableMaze, new BreadthFirstSearch());
+//            solveProblem(searchableMaze, new DepthFirstSearch());
+//            solveProblem(searchableMaze, new BestFirstSearch());
         }
         private static void solveProblem(ISearchable domain, ISearchingAlgorithm
                 searcher) {

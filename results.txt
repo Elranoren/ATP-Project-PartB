@@ -26,3 +26,7 @@ Test started!
 TEST Passed: generating maze (-1*1) using SimpleMazeGenerator
 TEST Passed: Applying BreadthFirstSearch on maze (-1,1)
 Test finished!
+Test started!
+TEST Passed: generating maze (10*10) using SimpleMazeGenerator
+TEST Passed: Applying BreadthFirstSearch on maze (10,10)
+Test finished!

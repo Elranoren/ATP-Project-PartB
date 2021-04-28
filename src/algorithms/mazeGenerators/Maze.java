@@ -85,13 +85,7 @@ public class Maze{
     }
     public byte[] toByteArray() {
         index=0;
-        int size = getColumns()*getRows();
-        int sRowSize = intToByte(getStartPosition().getRowIndex());
-        int sColSize = intToByte(getStartPosition().getColumnIndex());
-        int eRowSize = intToByte(getGoalPosition().getRowIndex());
-        int eColSize = intToByte(getGoalPosition().getColumnIndex());
-        int rowSize = intToByte(getRows());
-        int colSize = intToByte(getColumns());
+        int size = getColumns()*getRows(),sRowSize = intToByte(getStartPosition().getRowIndex()),sColSize = intToByte(getStartPosition().getColumnIndex()),eRowSize = intToByte(getGoalPosition().getRowIndex()),eColSize = intToByte(getGoalPosition().getColumnIndex()),rowSize = intToByte(getRows()),colSize = intToByte(getColumns());
         byte[] mazeByteBuffer = new byte[6+size+sRowSize+sColSize+eRowSize+eColSize+rowSize+colSize];
         intTobyteBuffer(getStartPosition().getRowIndex(),mazeByteBuffer);
         intTobyteBuffer(getStartPosition().getColumnIndex(),mazeByteBuffer);

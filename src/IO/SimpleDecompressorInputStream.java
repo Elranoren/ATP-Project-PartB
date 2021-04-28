@@ -4,10 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MyDecompressorInputStream extends InputStream {
+public class SimpleDecompressorInputStream extends InputStream {
     private InputStream in;
 
-    public MyDecompressorInputStream(FileInputStream in) {
+    public SimpleDecompressorInputStream(FileInputStream in) {
         this.in = in;
 
     }

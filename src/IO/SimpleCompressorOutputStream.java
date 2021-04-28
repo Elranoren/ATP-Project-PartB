@@ -43,7 +43,7 @@ public class SimpleCompressorOutputStream extends OutputStream {
 
     public int oneZeroSequenceCounter(byte[] b,boolean flag, int i, int zOrOcount) throws IOException {
 
-        while (flag) {
+        while (flag==true) {
             if (i == b.length || b[i] == 1) {
                 flag = false;
                 if (zOrOcount <= 255) {

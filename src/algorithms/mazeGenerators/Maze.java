@@ -3,6 +3,7 @@ package algorithms.mazeGenerators;
 public class Maze{
     private Position start,end;
     private int[][] maze;
+    static int index=0;
 
     /**
      * @param start start position of the maze
@@ -16,6 +17,39 @@ public class Maze{
         this.end = end;
 
         }
+
+    public Maze(byte[] mazeByteBuffer) {
+        index=0;
+        int sRow = byteTointMaze(mazeByteBuffer);
+        int sCol= byteTointMaze(mazeByteBuffer);
+        int eRow= byteTointMaze(mazeByteBuffer);
+        int eCol= byteTointMaze(mazeByteBuffer);
+        int bRow= byteTointMaze(mazeByteBuffer);
+        int bCol= byteTointMaze(mazeByteBuffer);
+        setStartPosition(new Position(sRow,sCol));
+        setGoalPosition(new Position(eRow,eCol));
+        setMaze(new int[bRow][bCol]);
+        for (int i = 0; i < bRow; i++) {
+            for (int j = 0; j < bCol; j++) {
+                getMaze()[i][j] = mazeByteBuffer[index];
+                index++;
+            }
+        }
+//        index=0;
+//
+//        setStartPosition(new Position(byteTointMaze(mazeByteBuffer),byteTointMaze(mazeByteBuffer)));
+//        setGoalPosition(new Position(byteTointMaze(mazeByteBuffer),byteTointMaze(mazeByteBuffer)));
+//        int bRow= byteTointMaze(mazeByteBuffer);
+//        int bCol= byteTointMaze(mazeByteBuffer);
+//        setMaze(new int[bRow][bCol]);
+//        for (int i = 0; i < bRow; i++) {
+//            for (int j = 0; j < bCol; j++) {
+//                getMaze()[i][j] = mazeByteBuffer[index];
+//                index++;
+//            }
+//        }
+
+    }
 
     public int getRows() {
         return this.maze.length;
@@ -49,7 +83,79 @@ public class Maze{
     public void setGoalPosition(Position p) {
         this.end = p;
     }
+    public byte[] toByteArray() {
+        index=0;
+        int size = getColumns()*getRows();
+        int sRowSize = intToByte(getStartPosition().getRowIndex());
+        int sColSize = intToByte(getStartPosition().getColumnIndex());
+        int eRowSize = intToByte(getGoalPosition().getRowIndex());
+        int eColSize = intToByte(getGoalPosition().getColumnIndex());
+        int rowSize = intToByte(getRows());
+        int colSize = intToByte(getColumns());
+        byte[] mazeByteBuffer = new byte[6+size+sRowSize+sColSize+eRowSize+eColSize+rowSize+colSize];
+        intTobyteBuffer(getStartPosition().getRowIndex(),mazeByteBuffer);
+        intTobyteBuffer(getStartPosition().getColumnIndex(),mazeByteBuffer);
+        intTobyteBuffer(getGoalPosition().getRowIndex(),mazeByteBuffer);
+        intTobyteBuffer(getGoalPosition().getColumnIndex(),mazeByteBuffer);
+        intTobyteBuffer(getRows(),mazeByteBuffer);
+        intTobyteBuffer(getColumns(),mazeByteBuffer);
 
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                mazeByteBuffer[index] = (byte) getMaze()[i][j];
+                index++;
+
+            }
+
+        }
+        return mazeByteBuffer;
+    }
+    public int intToByte(int num){
+        int c = 0;
+        if(num>255){
+            while(num>255) {
+                c++;
+                num -= 255;
+            }
+        }
+        return c+1;
+    }
+
+    public byte[] intTobyteBuffer(int num , byte[] buffer){
+        if(num>255) {
+            while (num > 255) {
+                buffer[index] = (byte) 255;
+                index++;
+                num -= 255;
+            }
+        }
+        buffer[index] = (byte) num;
+        index++;
+        buffer[index] = (byte) 0;
+        index++;
+        return buffer;
+    }
+    public int byteTointMaze(byte[] buffer){
+        int num = 0;
+        if(buffer[index]==0)
+            index++;
+        while(buffer[index]==-1){
+            num+=255;
+            index++;
+        }
+        if(buffer[index]<0){
+            num += buffer[index]+256;
+            index++;
+        }
+        if(buffer[index]>0){
+            num += buffer[index];
+            index++;
+        }
+        if(buffer[index]==0)
+            index++;
+        return num;
+
+    }
     /**
      * prints the maze
      */
@@ -83,6 +189,7 @@ public class Maze{
         }
         System.out.print("\n");
     }
+
 
 
 }

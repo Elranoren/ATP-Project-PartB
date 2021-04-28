@@ -36,51 +36,35 @@ public class SimpleCompressorOutputStream extends OutputStream {
         while(i<b.length) {
             zCount = 0;
             oCount = 0;
-
-            while (flag == true) {
-                if (i == b.length || b[i] == 1) {
-                    flag = false;
-                    if (zCount <= 255) {
-                        write(zCount);
-                        zCount = 0;
-                    } else {
-                        while (zCount > 255) {
-                            zCount -= 255;
-                            write(-1);
-                            write(0);
-                        }
-                        write(zCount);
-                        zCount = 0;
-                    }
-
-                } else {
-                    zCount++;
-                    i++;
-                }
-            }
-            while (flag == false) {
-                if (i == b.length || b[i] == 0) {
-                    flag = true;
-                    if (oCount <= 255) {
-                        write(oCount);
-                        oCount = 0;
-                    } else {
-                        while (oCount > 255) {
-                            oCount -= 255;
-                            write(-1);
-                            write(0);
-                        }
-                        write(oCount);
-                        oCount = 0;
-                    }
-
-                } else {
-                    oCount++;
-                    i++;
-                }
-            }
-
+            i = oneZeroSequenceCounter(b,flag, i,zCount);
+            i =oneZeroSequenceCounter(b,flag,i,oCount);
         }
+    }
+
+    public int oneZeroSequenceCounter(byte[] b,boolean flag, int i, int zOrOcount) throws IOException {
+
+        while (flag) {
+            if (i == b.length || b[i] == 1) {
+                flag = false;
+                if (zOrOcount <= 255) {
+                    write(zOrOcount);
+                    zOrOcount = 0;
+                } else {
+                    while (zOrOcount > 255) {
+                        zOrOcount -= 255;
+                        write(-1);
+                        write(0);
+                    }
+                    write(zOrOcount);
+                    zOrOcount = 0;
+                }
+
+            } else {
+                zOrOcount++;
+                i++;
+            }
+        }
+        return i;
     }
 
 

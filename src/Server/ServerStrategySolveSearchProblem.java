@@ -27,9 +27,9 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
 
             if (!file.exists() && file.isDirectory())
             {
-                if (Server.ProjectProperties.p.getProperty("mazeSearchingAlgorithm").equals("BFS"))
+                if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("BFS"))
                     searchingAlgorithm = new BreadthFirstSearch();
-                else if (Server.ProjectProperties.p.getProperty("mazeSearchingAlgorithm").equals("DFS"))
+                else if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("DFS"))
                     searchingAlgorithm = new DepthFirstSearch();
                 else
                     searchingAlgorithm = new BestFirstSearch();

@@ -15,7 +15,7 @@ public class RunCompressDecompressMaze {
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
         Maze maze = null; //Generate new maze
         try {
-            maze = mazeGenerator.generate(1000, 1000);
+            maze = mazeGenerator.generate(126, 126);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,7 +26,8 @@ public class RunCompressDecompressMaze {
             maze.print();
             //System.out.println(maze.getStartPosition());
             //System.out.println(maze.getGoalPosition());
-            out.write(maze.toByteArray());
+            byte[] h = maze.toByteArray();
+            out.write(h);
             out.flush();
             out.close();
         } catch (IOException e) {

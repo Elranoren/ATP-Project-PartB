@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,12 +21,13 @@ public class Server {
         this.listeningIntervalMS = listeningIntervalMS;
         this.strategy = strategy;
         this.stop = false;
-        int p= ProjectProperties.propertyVal;
+        int p= Configurations.propertyVal;
     }
     public void start(){
         int threadPoolSize;
         try {
-            threadPoolSize = Integer.parseInt(ProjectProperties.p.getProperty("threadPoolSize"));
+            String z = Configurations.p.getProperty("threadPoolSize");
+            threadPoolSize = Integer.parseInt(z);
         }
         catch (Exception e)
         {
@@ -36,8 +38,14 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(port);
             serverSocket.setSoTimeout(listeningIntervalMS);
             while (!stop){
-                Socket clientS = serverSocket.accept();
-                threadPool.submit(()->{handle(clientS);});
+                try {
+                    Socket clientS = serverSocket.accept();
+                    threadPool.submit(() -> {
+                        handle(clientS);
+                    });
+                } catch (SocketTimeoutException e) {
+                    System.out.println("Waiting for a Client");
+                }
             }
             serverSocket.close();
             threadPool.shutdownNow();
@@ -59,29 +67,6 @@ public class Server {
 
     public void stop(){
         stop=true;
-    }
-
-
-    public static class ProjectProperties{
-        static int propertyVal = getProperty();
-        protected static Properties p;
-        private static int getProperty(){
-            p= new Properties();
-            InputStream in=null;
-            try {
-                in = new FileInputStream("config.properties");
-                if (in == null){
-                    System.out.println(" Bad input");
-                    return -1;
-                }
-                p.load(in);
-
-            } catch (IOException e) {
-
-            }
-        return 1;
-        }
-
     }
 
 }

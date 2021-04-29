@@ -15,7 +15,7 @@ public class RunCompressDecompressMaze {
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
         Maze maze = null; //Generate new maze
         try {
-            maze = mazeGenerator.generate(100, 100);
+            maze = mazeGenerator.generate(1000, 1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,6 +23,9 @@ public class RunCompressDecompressMaze {
 // save maze to a file
             OutputStream out = new SimpleCompressorOutputStream(new
                     FileOutputStream(mazeFileName));
+            maze.print();
+            //System.out.println(maze.getStartPosition());
+            //System.out.println(maze.getGoalPosition());
             out.write(maze.toByteArray());
             out.flush();
             out.close();

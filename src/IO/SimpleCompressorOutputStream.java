@@ -32,23 +32,19 @@ public class SimpleCompressorOutputStream extends OutputStream {
     }
     public void writeContentOfMaze(int i , byte[] b) throws IOException {
         boolean flag = true;
-        int zCount=0,oCount=0;
         while(i<b.length) {
-            zCount = 0;
-            oCount = 0;
-            i = oneZeroSequenceCounter(b,flag, i,zCount);
-            i =oneZeroSequenceCounter(b,flag,i,oCount);
+            i = oneZeroSequenceCounter(b,flag, i,0,1);
+            i =oneZeroSequenceCounter(b,flag,i,0,0);
         }
     }
 
-    public int oneZeroSequenceCounter(byte[] b,boolean flag, int i, int zOrOcount) throws IOException {
+    public int oneZeroSequenceCounter(byte[] b,boolean flag, int i, int zOrOcount,int val) throws IOException {
 
         while (flag) {
-            if (i == b.length || b[i] == 1) {
+            if (i == b.length || b[i] == val) {
                 flag = false;
                 if (zOrOcount <= 255) {
                     write(zOrOcount);
-                    zOrOcount = 0;
                 } else {
                     while (zOrOcount > 255) {
                         zOrOcount -= 255;
@@ -56,7 +52,6 @@ public class SimpleCompressorOutputStream extends OutputStream {
                         write(0);
                     }
                     write(zOrOcount);
-                    zOrOcount = 0;
                 }
 
             }

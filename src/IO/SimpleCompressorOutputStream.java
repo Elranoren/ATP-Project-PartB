@@ -31,15 +31,14 @@ public class SimpleCompressorOutputStream extends OutputStream {
 
     }
     public void writeContentOfMaze(int i , byte[] b) throws IOException {
-        boolean flag = true;
         while(i<b.length) {
-            i = oneZeroSequenceCounter(b,flag, i,0,1);
-            i =oneZeroSequenceCounter(b,flag,i,0,0);
+            i = oneZeroSequenceCounter(b, i,0,1);
+            i =oneZeroSequenceCounter(b,i,0,0);
         }
     }
 
-    public int oneZeroSequenceCounter(byte[] b,boolean flag, int i, int zOrOcount,int val) throws IOException {
-
+    public int oneZeroSequenceCounter(byte[] b, int i, int zOrOcount,int val) throws IOException {
+        boolean flag = true;
         while (flag) {
             if (i == b.length || b[i] == val) {
                 flag = false;

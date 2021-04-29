@@ -12,7 +12,7 @@ public class Server {
     private int port;
     private int listeningIntervalMS;
     private IServerStrategy strategy;
-    private  boolean stop;
+    private volatile boolean stop;
     private ExecutorService threadPool;
 
     public Server(int port, int listeningIntervalMS, IServerStrategy strategy) {

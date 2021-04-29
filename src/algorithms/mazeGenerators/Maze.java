@@ -1,9 +1,29 @@
 package algorithms.mazeGenerators;
 
+import java.util.Arrays;
+
 public class Maze{
     private Position start,end;
     private int[][] maze;
     static int index=0;
+
+    @Override
+    public String toString() {
+        StringBuilder mazeString = new StringBuilder();
+        mazeString.append(getStartPosition().getRowIndex());
+        mazeString.append(getStartPosition().getColumnIndex());
+        mazeString.append(getGoalPosition().getRowIndex());
+        mazeString.append(getGoalPosition().getColumnIndex());
+        mazeString.append(getRows());
+        mazeString.append(getColumns());
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
+                mazeString.append(getMaze()[i][j]);
+            }
+        }
+        return mazeString.toString();
+
+    }
 
     /**
      * @param start start position of the maze

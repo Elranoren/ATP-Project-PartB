@@ -57,7 +57,7 @@ public class Server {
 
     }
 
-    private void stop(){
+    public void stop(){
         stop=true;
     }
 

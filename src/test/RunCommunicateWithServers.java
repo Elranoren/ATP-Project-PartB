@@ -29,7 +29,7 @@ public class RunCommunicateWithServers {
         CommunicateWithServer_SolveSearchProblem();
 //Stopping all servers
         //mazeGeneratingServer.stop();
-        //solveSearchProblemServer.stop();
+        solveSearchProblemServer.stop();
     }
     private static void CommunicateWithServer_MazeGenerating() {
         try {

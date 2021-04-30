@@ -1,8 +1,6 @@
 package test;
 import IO.MyCompressorOutputStream;
 import IO.MyDecompressorInputStream;
-import IO.SimpleCompressorOutputStream;
-import IO.SimpleDecompressorInputStream;
 import algorithms.mazeGenerators.AMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
@@ -15,13 +13,13 @@ public class RunCompressDecompressMaze {
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
         Maze maze = null; //Generate new maze
         try {
-            maze = mazeGenerator.generate(500, 500);
+            maze = mazeGenerator.generate(50, 50);
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
 // save maze to a file
-            OutputStream out = new SimpleCompressorOutputStream(new
+            OutputStream out = new MyCompressorOutputStream(new
                     FileOutputStream(mazeFileName));
             maze.print();
             //System.out.println(maze.getStartPosition());
@@ -36,7 +34,7 @@ public class RunCompressDecompressMaze {
         byte savedMazeBytes[] = new byte[0];
         try {
 //read maze from file
-            InputStream in = new SimpleDecompressorInputStream(new FileInputStream(mazeFileName));
+            InputStream in = new MyDecompressorInputStream(new FileInputStream(mazeFileName));
             savedMazeBytes = new byte[maze.toByteArray().length];
             in.read(savedMazeBytes);
             in.close();

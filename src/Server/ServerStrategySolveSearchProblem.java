@@ -31,8 +31,9 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             ISearchable searchable = new SearchableMaze(m);
 
 
-            if (!file.exists() || file.isDirectory())
+            if (!file.exists())
             {
+                System.out.println("File not Exist");
                 if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("BFS"))
                     searchingAlgorithm = new BreadthFirstSearch();
                 else if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("DFS"))
@@ -46,7 +47,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
                 o.close();
             }
             else {
-                System.out.println("File Already Exist");
+                System.out.println("File Is Exist");
                 FileInputStream inFile = new FileInputStream(mazeIdPath);
                 ObjectInputStream o = new ObjectInputStream(inFile);
                 sol= (Solution) o.readObject();

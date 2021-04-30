@@ -17,7 +17,7 @@ public class Client {
 
     public void start(){
         try {
-            Socket serverSocket = new Socket(serverIP,serverPort);
+            Socket serverSocket = new Socket(this.serverIP,this.serverPort);
             System.out.println("connected to server - IP = " + serverIP + ", Port = " + serverPort);
             strategy.clientStrategy(serverSocket.getInputStream(),serverSocket.getOutputStream());
         } catch (IOException e) {

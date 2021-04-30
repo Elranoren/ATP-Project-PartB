@@ -1,8 +1,9 @@
 package algorithms.mazeGenerators;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Maze{
+public class Maze implements Serializable {
     private Position start,end;
     private int[][] maze;
     static int index=0;

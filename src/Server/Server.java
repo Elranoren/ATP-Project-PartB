@@ -20,7 +20,6 @@ public class Server {
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
         this.strategy = strategy;
-        this.stop = false;
         int p= Configurations.propertyVal;
     }
     public void start(){
@@ -40,6 +39,7 @@ public class Server {
             while (!stop){
                 try {
                     Socket clientS = serverSocket.accept();
+                    System.out.println("Client accepted: " + clientS.toString());
                     threadPool.submit(() -> {
                         handle(clientS);
                     });
@@ -66,7 +66,7 @@ public class Server {
     }
 
     public void stop(){
-        stop=true;
+        this.stop=true;
     }
 
 }

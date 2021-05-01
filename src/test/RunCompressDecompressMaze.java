@@ -13,7 +13,7 @@ public class RunCompressDecompressMaze {
         AMazeGenerator mazeGenerator = new MyMazeGenerator();
         Maze maze = null; //Generate new maze
         try {
-            maze = mazeGenerator.generate(50, 50);
+            maze = mazeGenerator.generate(1000, 1000);
         } catch (Exception e) {
             e.printStackTrace();
         }

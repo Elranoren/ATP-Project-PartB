@@ -13,14 +13,14 @@ public class Server {
     private int port;
     private int listeningIntervalMS;
     private IServerStrategy strategy;
-    private volatile boolean stop;
+    private boolean stop;
     private ExecutorService threadPool;
 
     public Server(int port, int listeningIntervalMS, IServerStrategy strategy) {
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
         this.strategy = strategy;
-        int p= Configurations.propertyVal;
+        //int p= Configurations.propertyVal;
     }
     public void start(){
         int threadPoolSize;
@@ -43,8 +43,8 @@ public class Server {
                     threadPool.submit(() -> {
                         handle(clientS);
                     });
-                } catch (SocketTimeoutException e) {
-                    System.out.println("Waiting for a Client");
+                } catch (SocketTimeoutException e){
+                    System.out.println("Socket timeout");
                 }
             }
             serverSocket.close();

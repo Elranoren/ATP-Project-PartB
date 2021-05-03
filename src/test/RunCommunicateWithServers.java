@@ -35,22 +35,6 @@ public class RunCommunicateWithServers {
 //Communicating with servers
         CommunicateWithServer_MazeGenerating();
         CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
-        CommunicateWithServer_SolveSearchProblem();
 
 //        Thread f = new Thread(() -> CommunicateWithServer_MazeGenerating());
 //        f.start();

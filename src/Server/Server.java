@@ -22,7 +22,14 @@ public class Server {
         this.strategy = strategy;
         //int p= Configurations.propertyVal;
     }
+
+
     public void start(){
+        Thread t = new Thread(()-> {this.run();
+            System.out.println("Server End");});
+        t.start();
+    }
+    public void run(){
         int threadPoolSize;
         try {
             String z = Configurations.p.getProperty("threadPoolSize");

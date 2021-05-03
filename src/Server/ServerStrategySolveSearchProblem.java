@@ -18,11 +18,6 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
             ObjectInputStream fromClient= new ObjectInputStream(inFromClient);
             ObjectOutputStream toClient= new ObjectOutputStream(outToClient);
             Maze m = (Maze) fromClient.readObject();
-           // m = new Maze(new Position(0,0),new Position(1,1),new int[2][2]);
-           // m.getMaze()[0][0]=0;
-           // m.getMaze()[0][1]=1;
-            //m.getMaze()[1][0]=1;
-            //m.getMaze()[1][1]=0;
             int mazeId =(m.toString()).hashCode();
             String tempDirectoryPath =System.getProperty("java.io.tmpdir");
             String mazeIdPath =tempDirectoryPath + mazeId;

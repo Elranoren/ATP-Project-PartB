@@ -31,35 +31,25 @@ public class MyCompressorOutputStream extends OutputStream {
 
     }
     public void writeContentOfMaze(int i , byte[] b) throws IOException {
+        String byteB ="";
         while(i<b.length) {
-            i = oneZeroSequenceCounter(b, i,0,1);
-            i =oneZeroSequenceCounter(b,i,0,0);
-        }
-    }
-
-    public int oneZeroSequenceCounter(byte[] b, int i, int zOrOcount,int val) throws IOException {
-        boolean flag = true;
-        while (flag) {
-            if (i == b.length || b[i] == val) {
-                flag = false;
-                if (zOrOcount <= 255) {
-                    write(zOrOcount);
-                } else {
-                    while (zOrOcount > 255) {
-                        zOrOcount -= 255;
-                        write(-1);
-                        write(0);
-                    }
-                    write(zOrOcount);
-                }
-
-            }
-            else {
-                zOrOcount++;
+            for (int j = 0; j < 8 ; j++) {
+                byteB+= b[i] ;
                 i++;
+                if (i == b.length)
+                    break;
             }
+
+            try {
+                int b1=Integer.parseInt(byteB,2);
+                write((byte)b1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            byteB ="";
         }
-        return i;
     }
+
+
 
 }

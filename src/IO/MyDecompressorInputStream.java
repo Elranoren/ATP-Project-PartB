@@ -18,41 +18,59 @@ public class MyDecompressorInputStream extends InputStream {
     }
 
     public int read(byte[] b) throws IOException {
-        int paramCounter = 0, i = 0, r;
+        int paramCounter = 0, i = 0, r,row=0,col=0;
         while (paramCounter <= 5) {
             r = read();
             while (r == 255 && i < b.length) {
+                if (paramCounter==4)
+                    row+=r;
+                if (paramCounter==5)
+                    col+=r;
                 b[i] = -1;
                 i++;
                 r = read();
             }
+            if (paramCounter==4 )
+                row+=r;
+            if (paramCounter==5 )
+                col+=r;
             b[i] = (byte) r;
             i++;
             b[i] = (byte) read();
             i++;
+
             paramCounter++;
 
         }
-        while (i < b.length) {
+        int restBit = (row*col)%8;
+        String byteToBinary="";
+        while (i < b.length -restBit) {
             r = read();
-            if (r == 0) {
-                b[i] = (byte) 0;
-            } else {
-                for (int j = 0; j < r; j++) {
-                    b[i] = (byte) 0;
-                    i++;
-                }
+
+            byteToBinary =String.format("%8s", Integer.toBinaryString((byte) r & 0xFF)).replace(' ', '0');
+            for (int j = 0; j < byteToBinary.length(); j++) {
+                String s = byteToBinary.substring(j,j+1);
+                char c = s.charAt(0);
+                b[i]=(byte)Character.getNumericValue(c);
+                i++;
+                if(i == b.length -restBit)
+                    break;
+
             }
-            if(i == b.length)
-                break;
+        }
+        if (restBit!=0)
+        {
+
             r = read();
-            if (r == 0) {
-                b[i] = (byte) 1;
-            } else {
-                for (int j = 0; j < r; j++) {
-                    b[i] = (byte) 1;
-                    i++;
-                }
+            byteToBinary =String.format("%8s", Integer.toBinaryString((byte) r & 0xFF)).replace(' ', '0');
+            for (int j = 8-restBit; j < 8; j++) {
+                String s = byteToBinary.substring(j,j+1);
+                char c = s.charAt(0);
+                b[i]=(byte)Character.getNumericValue(c);
+                i++;
+                if (i==b.length)
+                    break;
+
             }
         }
         return -1;

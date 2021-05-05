@@ -15,6 +15,10 @@ public class SimpleCompressorOutputStream extends OutputStream {
         out.write(b);
     }
 
+    /**
+     * @param b byte array of the maze
+     * @throws IOException
+     */
     public void write(byte[] b) throws IOException {
         int paramCounter=0,i=0;
         while(paramCounter<=5){

@@ -15,7 +15,7 @@ public class ServerStrategyGenerateMaze implements IServerStrategy{
     @Override
     public void applyStrategy(InputStream inFromClient, OutputStream outToClient)  {
         try {
-            IMazeGenerator mazeGeneratingAlgorithm=null ;
+            IMazeGenerator mazeGeneratingAlgorithm=new MyMazeGenerator(); ;
             ObjectInputStream fromClient= new ObjectInputStream(inFromClient);
             ObjectOutputStream toClient= new ObjectOutputStream(outToClient);
             int[] mazeDimens = (int[]) fromClient.readObject();

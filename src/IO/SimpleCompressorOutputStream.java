@@ -30,15 +30,30 @@ public class SimpleCompressorOutputStream extends OutputStream {
         writeContentOfMaze(i,b);
 
     }
+
+    /**
+     * @param i the start index of the content of the maze ( after the parameters of the maze )
+     * @param b byte array of the maze
+     * @throws IOException
+     */
     public void writeContentOfMaze(int i , byte[] b) throws IOException {
         while(i<b.length) {
-            i = oneZeroSequenceCounter(b, i,0,1);
-            i =oneZeroSequenceCounter(b,i,0,0);
+            i = oneZeroSequenceCounter(b, i,1);
+            i =oneZeroSequenceCounter(b,i,0);
         }
     }
 
-    public int oneZeroSequenceCounter(byte[] b, int i, int zOrOcount,int val) throws IOException {
+
+    /**
+     * @param b byte array of the maze
+     * @param i the next index of array b
+     * @param val 0 if we want to count sequence of zero , 1 if we want to count sequence of one
+     * @return the current index of array b
+     * @throws IOException
+     */
+    public int oneZeroSequenceCounter(byte[] b, int i,int val) throws IOException {
         boolean flag = true;
+        int zOrOcount=0;
         while (flag) {
             if (i == b.length || b[i] == val) {
                 flag = false;

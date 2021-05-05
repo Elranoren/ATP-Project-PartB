@@ -162,8 +162,12 @@ public class Main {
         //Starting  servers
         solveSearchProblemServer.start();
         mazeGeneratingServer.start();
+        for (int i = 0; i < 4; i++) {
+            Thread t = new Thread(() -> CommunicateWithServer_MazeGenerating(counter));
+            t.start();
+        }
+        //CommunicateWithServer_MazeGenerating(counter);
 
-        CommunicateWithServer_MazeGenerating(counter);
         CommunicateWithServer_SolveSearchProblem(counter);
 
         //Stopping all servers

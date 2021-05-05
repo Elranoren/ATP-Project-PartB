@@ -32,10 +32,10 @@ public class RunCommunicateWithServers {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-            for (int j = 0; j < 10; j++) {
-                Thread a = new Thread(() -> CommunicateWithServer_MazeGenerating());
-                a.start();
-            }
+        for (int j = 0; j < 10; j++) {
+            Thread a = new Thread(() -> CommunicateWithServer_MazeGenerating());
+            a.start();
+        }
 //            for (int i = 0; i < 10; i++) {
 //                Thread b = new Thread(() -> CommunicateWithServer_SolveSearchProblem());
 //                b.start();

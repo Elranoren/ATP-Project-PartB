@@ -8,6 +8,11 @@ import java.util.Properties;
 public class Configurations {
     static int propertyVal = getProperty();
     protected static Properties p;
+
+
+    /**
+     * @return 1
+     */
     private static int getProperty(){
         p= new Properties();
         InputStream in=null;

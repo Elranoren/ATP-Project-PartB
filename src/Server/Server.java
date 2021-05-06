@@ -24,11 +24,18 @@ public class Server {
     }
 
 
+    /**
+     * Starting the Server
+     */
     public void start(){
         Thread t = new Thread(()-> {this.run();
             System.out.println("Server End");});
         t.start();
     }
+
+    /**
+     * Running the Server
+     */
     public void run(){
         int threadPoolSize;
         try {
@@ -63,6 +70,9 @@ public class Server {
 
     }
 
+    /**
+     * @param clientS client socket to handle with
+     */
     private void handle(Socket clientS) {
         try {
             strategy.applyStrategy(clientS.getInputStream(),clientS.getOutputStream());
@@ -72,6 +82,9 @@ public class Server {
 
     }
 
+    /**
+     * Stopping the Server
+     */
     public void stop(){
         this.stop=true;
     }

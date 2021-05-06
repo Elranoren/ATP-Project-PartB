@@ -17,6 +17,11 @@ public class MyDecompressorInputStream extends InputStream {
         return in.read();
     }
 
+    /**
+     * @param b byte array to update according to the input of the maze
+     * @return -1
+     * @throws IOException
+     */
     public int read(byte[] b) throws IOException {
         int paramCounter = 0, i = 0, r,row=0,col=0;
         while (paramCounter <= 5) {

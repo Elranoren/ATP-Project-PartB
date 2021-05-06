@@ -15,6 +15,10 @@ public class MyCompressorOutputStream extends OutputStream {
         out.write(b);
     }
 
+    /**
+     * @param b byte array of the maze
+     * @throws IOException
+     */
     public void write(byte[] b) throws IOException {
         int paramCounter=0,i=0;
         while(paramCounter<=5){
@@ -30,6 +34,12 @@ public class MyCompressorOutputStream extends OutputStream {
         writeContentOfMaze(i,b);
 
     }
+
+    /**
+     * @param i the start index of the content of the maze ( after the parameters of the maze )
+     * @param b byte array of the maze
+     * @throws IOException
+     */
     public void writeContentOfMaze(int i , byte[] b) throws IOException {
         String byteB ="";
         while(i<b.length) {

@@ -12,6 +12,10 @@ import java.io.*;
 
 public class ServerStrategyGenerateMaze implements IServerStrategy{
 
+    /**
+     * @param inFromClient the input stream from the client
+     * @param outToClient the output stream to the client
+     */
     @Override
     public void applyStrategy(InputStream inFromClient, OutputStream outToClient)  {
         try {

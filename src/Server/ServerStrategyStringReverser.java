@@ -7,6 +7,10 @@ import java.nio.channels.Channels;
 import java.util.Locale;
 
 public class ServerStrategyStringReverser implements IServerStrategy {
+    /**
+     * @param inFromClient input from the client
+     * @param outToClient output to the client
+     */
     @Override
     public void applyStrategy(InputStream inFromClient, OutputStream outToClient) {
         // The Streams from Channels are interruptible,

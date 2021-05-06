@@ -15,6 +15,9 @@ public class Client {
         this.strategy = strategy;
     }
 
+    /**
+     * Starting the client
+     */
     public void start(){
         try {
             Socket serverSocket = new Socket(this.serverIP,this.serverPort);
@@ -26,6 +29,9 @@ public class Client {
 
     }
 
+    /**
+     * Starting the communication with the server
+     */
     public void communicateWithServer() {
         start();
     }

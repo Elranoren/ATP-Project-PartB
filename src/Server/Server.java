@@ -25,8 +25,7 @@ public class Server {
      * Starting the Server
      */
     public void start(){
-        Thread t = new Thread(()-> {this.run();
-            System.out.println("Server End");});
+        Thread t = new Thread(()-> {this.run();});
         t.start();
     }
 
@@ -50,12 +49,12 @@ public class Server {
             while (!stop){
                 try {
                     Socket clientS = serverSocket.accept();
-                    System.out.println("Client accepted: " + clientS.toString());
+                    //System.out.println("Client accepted: " + clientS.toString());
                     threadPool.submit(() -> {
                         handle(clientS);
                     });
                 } catch (SocketTimeoutException e){
-                    System.out.println("Socket timeout");
+                    //System.out.println("Socket timeout");
                 }
             }
             serverSocket.close();

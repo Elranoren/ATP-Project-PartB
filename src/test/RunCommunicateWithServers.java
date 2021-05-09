@@ -32,35 +32,35 @@ public class RunCommunicateWithServers {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        for (int j = 0; j < 20; j++) {
-            Thread a = new Thread(() -> CommunicateWithServer_MazeGenerating(1000    ,1000));
-            a.start();
-        }
-            for (int i = 0; i <20; i++) {
-                Thread b = new Thread(() -> CommunicateWithServer_SolveSearchProblem(1000,1000));
-                b.start();
-            }
-//
-            CommunicateWithServer_MazeGenerating(50, 50);
-            CommunicateWithServer_SolveSearchProblem(50, 50);
-            CommunicateWithServer_MazeGenerating(100, 100);
-            CommunicateWithServer_SolveSearchProblem(100, 100);
-            CommunicateWithServer_MazeGenerating(150, 150);
-            CommunicateWithServer_SolveSearchProblem(150, 150);
-            CommunicateWithServer_MazeGenerating(200, 200);
-            CommunicateWithServer_SolveSearchProblem(200, 200);
-            CommunicateWithServer_MazeGenerating(250, 250);
-            CommunicateWithServer_SolveSearchProblem(250, 250);
-            CommunicateWithServer_MazeGenerating(300, 300);
-            CommunicateWithServer_SolveSearchProblem(300, 300);
-            CommunicateWithServer_MazeGenerating(350, 350);
-            CommunicateWithServer_SolveSearchProblem(350, 350);
-            CommunicateWithServer_MazeGenerating(400, 400);
-            CommunicateWithServer_SolveSearchProblem(400, 400);
-            CommunicateWithServer_MazeGenerating(450, 450);
-            CommunicateWithServer_SolveSearchProblem(450, 450);
-            CommunicateWithServer_MazeGenerating(500, 500);
-            CommunicateWithServer_SolveSearchProblem(500, 500);
+//        for (int j = 0; j < 2; j++) {
+//            Thread a = new Thread(() -> CommunicateWithServer_MazeGenerating(5    ,10));
+//            a.start();
+//        }
+//        for (int i = 0; i <2; i++) {
+//            Thread b = new Thread(() -> CommunicateWithServer_SolveSearchProblem(7,12));
+//            b.start();
+//        }
+
+        CommunicateWithServer_MazeGenerating(4,8);
+        CommunicateWithServer_SolveSearchProblem(15,3);
+        CommunicateWithServer_MazeGenerating(7,7);
+        CommunicateWithServer_SolveSearchProblem(11,13);
+//        CommunicateWithServer_MazeGenerating(150,150);
+//        CommunicateWithServer_SolveSearchProblem(150,150);
+//        CommunicateWithServer_MazeGenerating(200,200);
+//        CommunicateWithServer_SolveSearchProblem(200,200);
+//        CommunicateWithServer_MazeGenerating(250,250);
+//        CommunicateWithServer_SolveSearchProblem(250,250);
+//        CommunicateWithServer_MazeGenerating(300,300);
+//        CommunicateWithServer_SolveSearchProblem(300,300);
+//        CommunicateWithServer_MazeGenerating(350,350);
+//        CommunicateWithServer_SolveSearchProblem(350,350);
+//        CommunicateWithServer_MazeGenerating(400,400);
+//        CommunicateWithServer_SolveSearchProblem(400,400);
+//        CommunicateWithServer_MazeGenerating(450,450);
+//        CommunicateWithServer_SolveSearchProblem(450,450);
+//        CommunicateWithServer_MazeGenerating(500,500);
+//        CommunicateWithServer_SolveSearchProblem(500,500);
 
 
 //        CommunicateWithServer_SolveSearchProblem();
@@ -130,7 +130,7 @@ public class RunCommunicateWithServers {
                         byte[] decompressedMaze = new byte[l*r+30]; //allocating byte[] for the decompressedmaze -
                         is.read(decompressedMaze); //Fill decompressed Maze with bytes
                         Maze maze = new Maze(decompressedMaze);
-                        //maze.print();
+                        maze.print();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -152,16 +152,16 @@ public class RunCommunicateWithServers {
                         toServer.flush();
                         MyMazeGenerator mg = new MyMazeGenerator();
                         Maze maze = mg.generate(l, r);
-                        //maze.print();
+                        maze.print();
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
                         Solution mazeSolution = (Solution) fromServer.readObject(); //read generated maze (compressed withMyCompressor) from server
                         //Print Maze Solution retrieved from the server
-                        //System.out.println(String.format("Solution steps: %s", mazeSolution));
+                        // System.out.println(String.format("Solution steps: %s", mazeSolution));
                         ArrayList<AState> mazeSolutionSteps = mazeSolution.getSolutionPath();
-                        //for (int i = 0; i < mazeSolutionSteps.size(); i++) {
-                            //System.out.println(String.format("%s. %s", i, mazeSolutionSteps.get(i).toString()));
-                        //}
+                        for (int i = 0; i < mazeSolutionSteps.size(); i++) {
+                            System.out.println(String.format("%s. %s", i, mazeSolutionSteps.get(i).toString()));
+                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

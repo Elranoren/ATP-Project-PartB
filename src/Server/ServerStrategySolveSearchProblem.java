@@ -1,7 +1,6 @@
 package Server;
 
-import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.Position;
+import algorithms.mazeGenerators.*;
 import algorithms.search.*;
 
 import java.io.*;
@@ -14,7 +13,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
      * @param outToClient output to the client
      */
     @Override
-    public void applyStrategy(InputStream inFromClient, OutputStream outToClient) {
+    public void ServerStrategy(InputStream inFromClient, OutputStream outToClient) {
 
         try {
             ObjectInputStream fromClient= new ObjectInputStream(inFromClient);
@@ -47,25 +46,33 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy{
         ISearchingAlgorithm searchingAlgorithm ;
         if (!file.exists())
         {
-            //System.out.println("File not Exist");
-            if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("BFS"))
-                searchingAlgorithm = new BreadthFirstSearch();
-            else if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("DFS"))
-                searchingAlgorithm = new DepthFirstSearch();
-            else
+            try {
+                if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("BreadthFirstSearch"))
+                    searchingAlgorithm = new BreadthFirstSearch();
+                else if (Configurations.p.getProperty("mazeSearchingAlgorithm").equals("DepthFirstSearch"))
+                    searchingAlgorithm = new DepthFirstSearch();
+                else
+                    searchingAlgorithm = new BestFirstSearch();
+            }
+            catch (Exception e)
+            {
                 searchingAlgorithm = new BestFirstSearch();
+            }
+
             try {
                 sol = searchingAlgorithm.solve(searchable);
                 FileOutputStream outFile = new FileOutputStream(mazeIdPath);
                 ObjectOutputStream o = new ObjectOutputStream(outFile);
-                o.writeObject(sol);
+                synchronized(this){
+                    o.writeObject(sol);
+                }
                 o.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         else {
-            //System.out.println("File Is Exist");
+
             FileInputStream inFile = null;
             try {
                 inFile = new FileInputStream(mazeIdPath);

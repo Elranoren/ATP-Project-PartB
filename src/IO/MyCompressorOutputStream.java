@@ -40,7 +40,7 @@ public class MyCompressorOutputStream extends OutputStream {
      * @param b byte array of the maze
      * @throws IOException
      */
-    public void writeContentOfMaze(int i , byte[] b) throws IOException {
+    public void writeContentOfMaze(int i , byte[] b) {
         String byteB ="";
         while(i<b.length) {
             for (int j = 0; j < 8 ; j++) {

@@ -1,11 +1,8 @@
 package Server;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -20,7 +17,7 @@ public class Server {
         this.port = port;
         this.listeningIntervalMS = listeningIntervalMS;
         this.strategy = strategy;
-        //int p= Configurations.propertyVal;
+        int p= Configurations.propertyVal;
     }
 
 
@@ -75,7 +72,7 @@ public class Server {
      */
     private void handle(Socket clientS) {
         try {
-            strategy.applyStrategy(clientS.getInputStream(),clientS.getOutputStream());
+            strategy.ServerStrategy(clientS.getInputStream(),clientS.getOutputStream());
             clientS.close();
         } catch (IOException e) {
         }

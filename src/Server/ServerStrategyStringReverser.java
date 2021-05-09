@@ -1,4 +1,4 @@
-package Server.Strategy;
+package Server;
 
 import Server.IServerStrategy;
 
@@ -12,7 +12,7 @@ public class ServerStrategyStringReverser implements IServerStrategy {
      * @param outToClient output to the client
      */
     @Override
-    public void applyStrategy(InputStream inFromClient, OutputStream outToClient) {
+    public void ServerStrategy(InputStream inFromClient, OutputStream outToClient) {
         // The Streams from Channels are interruptible,
         // so we decorate our input stream even more to enable it to also be interruptible:
         InputStream interruptibleInputStream = Channels.newInputStream(Channels.newChannel(inFromClient));

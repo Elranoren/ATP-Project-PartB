@@ -32,16 +32,35 @@ public class RunCommunicateWithServers {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        for (int j = 0; j < 10; j++) {
-            Thread a = new Thread(() -> CommunicateWithServer_MazeGenerating());
+        for (int j = 0; j < 20; j++) {
+            Thread a = new Thread(() -> CommunicateWithServer_MazeGenerating(1000    ,1000));
             a.start();
         }
-//            for (int i = 0; i < 10; i++) {
-//                Thread b = new Thread(() -> CommunicateWithServer_SolveSearchProblem());
-//                b.start();
-//            }
-
-
+            for (int i = 0; i <20; i++) {
+                Thread b = new Thread(() -> CommunicateWithServer_SolveSearchProblem(1000,1000));
+                b.start();
+            }
+//
+            CommunicateWithServer_MazeGenerating(50, 50);
+            CommunicateWithServer_SolveSearchProblem(50, 50);
+            CommunicateWithServer_MazeGenerating(100, 100);
+            CommunicateWithServer_SolveSearchProblem(100, 100);
+            CommunicateWithServer_MazeGenerating(150, 150);
+            CommunicateWithServer_SolveSearchProblem(150, 150);
+            CommunicateWithServer_MazeGenerating(200, 200);
+            CommunicateWithServer_SolveSearchProblem(200, 200);
+            CommunicateWithServer_MazeGenerating(250, 250);
+            CommunicateWithServer_SolveSearchProblem(250, 250);
+            CommunicateWithServer_MazeGenerating(300, 300);
+            CommunicateWithServer_SolveSearchProblem(300, 300);
+            CommunicateWithServer_MazeGenerating(350, 350);
+            CommunicateWithServer_SolveSearchProblem(350, 350);
+            CommunicateWithServer_MazeGenerating(400, 400);
+            CommunicateWithServer_SolveSearchProblem(400, 400);
+            CommunicateWithServer_MazeGenerating(450, 450);
+            CommunicateWithServer_SolveSearchProblem(450, 450);
+            CommunicateWithServer_MazeGenerating(500, 500);
+            CommunicateWithServer_SolveSearchProblem(500, 500);
 
 
 //        CommunicateWithServer_SolveSearchProblem();
@@ -92,7 +111,7 @@ public class RunCommunicateWithServers {
 
 
     }
-    private static void CommunicateWithServer_MazeGenerating() {
+    private static void CommunicateWithServer_MazeGenerating(int l , int r) {
         try {
             Client client = new Client(InetAddress.getLocalHost(), 5400, new IClientStrategy() {
                 @Override
@@ -101,16 +120,16 @@ public class RunCommunicateWithServers {
                         ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
                         ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
-                        int l = 1000;
-                        int r =1000;
+//                        int l = 1000;
+//                        int r =1000;
                         int[] mazeDimensions = new int[]{l, r};
                         toServer.writeObject(mazeDimensions); //send mazedimensions to server
                         toServer.flush();
                         byte[] compressedMaze = (byte[]) fromServer.readObject(); //read generated maze (compressed withMyCompressor) from server
                         InputStream is = new MyDecompressorInputStream(new ByteArrayInputStream(compressedMaze));
-                        byte[] decompressedMaze = new byte[l*r+12]; //allocating byte[] for the decompressedmaze -
+                        byte[] decompressedMaze = new byte[l*r+30]; //allocating byte[] for the decompressedmaze -
                         is.read(decompressedMaze); //Fill decompressed Maze with bytes
-                        new Maze(decompressedMaze);
+                        Maze maze = new Maze(decompressedMaze);
                         //maze.print();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -122,7 +141,7 @@ public class RunCommunicateWithServers {
             e.printStackTrace();
         }
     }
-    private static void CommunicateWithServer_SolveSearchProblem() {
+    private static void CommunicateWithServer_SolveSearchProblem(int l , int r) {
         try {
             Client client = new Client(InetAddress.getLocalHost(), 5401, new IClientStrategy() {
                 @Override
@@ -132,7 +151,7 @@ public class RunCommunicateWithServers {
                         ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
                         MyMazeGenerator mg = new MyMazeGenerator();
-                        Maze maze = mg.generate(1000, 1000);
+                        Maze maze = mg.generate(l, r);
                         //maze.print();
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
@@ -140,9 +159,9 @@ public class RunCommunicateWithServers {
                         //Print Maze Solution retrieved from the server
                         //System.out.println(String.format("Solution steps: %s", mazeSolution));
                         ArrayList<AState> mazeSolutionSteps = mazeSolution.getSolutionPath();
-//                        for (int i = 0; i < mazeSolutionSteps.size(); i++) {
-//                            //System.out.println(String.format("%s. %s", i, mazeSolutionSteps.get(i).toString()));
-//                        }
+                        //for (int i = 0; i < mazeSolutionSteps.size(); i++) {
+                            //System.out.println(String.format("%s. %s", i, mazeSolutionSteps.get(i).toString()));
+                        //}
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

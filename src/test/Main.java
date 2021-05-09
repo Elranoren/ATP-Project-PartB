@@ -162,12 +162,8 @@ public class Main {
         //Starting  servers
         solveSearchProblemServer.start();
         mazeGeneratingServer.start();
-        for (int i = 0; i < 4; i++) {
-            Thread t = new Thread(() -> CommunicateWithServer_MazeGenerating(counter));
-            t.start();
-        }
-        //CommunicateWithServer_MazeGenerating(counter);
 
+        CommunicateWithServer_MazeGenerating(counter);
         CommunicateWithServer_SolveSearchProblem(counter);
 
         //Stopping all servers
@@ -185,11 +181,11 @@ public class Main {
                         total_test++;
                         int size = (int) (50 * (i+1));
                         ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
-                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
                         int[] mazeDimensions = new int[]{size, size};
                         toServer.writeObject(mazeDimensions); //send maze dimensions to server
                         toServer.flush();
+                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         byte[] compressedMaze = (byte[]) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
                         InputStream is = new MyDecompressorInputStream(new ByteArrayInputStream(compressedMaze));
                         byte[] decompressedMaze = new byte[1000000 /*CHANGE SIZE ACCORDING TO YOU MAZE SIZE*/]; //allocating byte[] for the decompressed maze -

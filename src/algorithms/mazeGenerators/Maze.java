@@ -1,12 +1,11 @@
 package algorithms.mazeGenerators;
-
 import java.io.Serializable;
-import java.util.Arrays;
+
 
 public class Maze implements Serializable {
     private Position start,end;
     private int[][] maze;
-    static int index=0;
+    private int index=0;
 
     @Override
     public String toString() {
@@ -52,23 +51,10 @@ public class Maze implements Serializable {
         setMaze(new int[bRow][bCol]);
         for (int i = 0; i < bRow; i++) {
             for (int j = 0; j < bCol; j++) {
-                getMaze()[i][j] = mazeByteBuffer[index];
+                maze[i][j] = mazeByteBuffer[index];
                 index++;
             }
         }
-//        index=0;
-//
-//        setStartPosition(new Position(byteTointMaze(mazeByteBuffer),byteTointMaze(mazeByteBuffer)));
-//        setGoalPosition(new Position(byteTointMaze(mazeByteBuffer),byteTointMaze(mazeByteBuffer)));
-//        int bRow= byteTointMaze(mazeByteBuffer);
-//        int bCol= byteTointMaze(mazeByteBuffer);
-//        setMaze(new int[bRow][bCol]);
-//        for (int i = 0; i < bRow; i++) {
-//            for (int j = 0; j < bCol; j++) {
-//                getMaze()[i][j] = mazeByteBuffer[index];
-//                index++;
-//            }
-//        }
 
     }
 

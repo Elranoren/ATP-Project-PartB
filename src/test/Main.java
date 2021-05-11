@@ -1,4 +1,5 @@
 package test;
+
 import Client.*;
 import IO.MyCompressorOutputStream;
 import IO.MyDecompressorInputStream;
@@ -135,9 +136,9 @@ public class Main {
 
         }
         File compressed = new File("savedMaze.maze");
-        appendToResultsFile("compressed size - " + (double) compressed.length() / 1024);
+        //appendToResultsFile("compressed size - " + (double) compressed.length() / 1024);
         double current_comp = compressed.length();
-        appendToResultsFile("compression rate - " + (((double)compressed.length() / 1024) / mazeOriginalSize) * 100);
+        //appendToResultsFile("compression rate - " + (((double)compressed.length() / 1024) / mazeOriginalSize) * 100);
         Maze loadedMaze = new Maze(savedMazeBytes);
         boolean areMazesEquals = Arrays.equals(loadedMaze.toByteArray(), maze.toByteArray());
         if (areMazesEquals == true)
@@ -220,13 +221,13 @@ public class Main {
                         total_test++;
                         int size = (int) (50 * (i+1));
                         ObjectOutputStream toServer = new ObjectOutputStream(outToServer);
-                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         toServer.flush();
                         MyMazeGenerator mg = new MyMazeGenerator();
 
                         Maze maze = mg.generate(size, size);
                         toServer.writeObject(maze); //send maze to server
                         toServer.flush();
+                        ObjectInputStream fromServer = new ObjectInputStream(inFromServer);
                         Solution mazeSolution = (Solution) fromServer.readObject(); //read generated maze (compressed with MyCompressor) from server
 
                         //Print Maze Solution retrieved from the server
@@ -249,6 +250,7 @@ public class Main {
         } finally {
         }
         total_pass +=  testsPassed.get();
+
     }
     //</editor-fold>
 }
